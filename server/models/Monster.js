@@ -1,5 +1,5 @@
 // Importing the Schema object from the mongoose library
-const { Schema, model } = require("mongoose"); // Creating the Monster model based on the monsterSchema const Monster = model("Monster", monsterSchema); before the export statement
+const { Schema, model } = require("mongoose");
 
 // Defining the schema for the monster entity
 const monsterSchema = new Schema({
@@ -22,5 +22,7 @@ const monsterSchema = new Schema({
   },
 });
 
-// Exporting the monster schema to be used in other parts of the application
-module.exports = monsterSchema;
+const Monster = model("Monster", monsterSchema); // Creating a model for the monster schema
+
+// Exporting the monster model to be used in other parts of the application
+module.exports = Monster;
