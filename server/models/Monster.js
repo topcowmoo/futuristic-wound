@@ -9,11 +9,6 @@ const monsterSchema = new Schema({
     required: true, // Field is required (not optional)
     unique: true, // Field values must be unique across documents
   },
-  // Field for the ID of the monster
-  monsterId: {
-    type: String, // Data type of the field is String
-    required: true, // Field is required (not optional)
-  },
   // Field for the image path of the monster
   image: {
     type: String, // Data type of the field is String
