@@ -1,5 +1,5 @@
 // Importing the Schema object from the mongoose library
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose"); // Creating the Monster model based on the monsterSchema const Monster = model("Monster", monsterSchema); before the export statement
 
 // Defining the schema for the monster entity
 const monsterSchema = new Schema({
@@ -18,7 +18,7 @@ const monsterSchema = new Schema({
   image: {
     type: String, // Data type of the field is String
     required: true, // Field is required (not optional)
-    default: "public/images/monster1.png", // Default value for the field if not provided explicitly
+    default: "", // "public/images/monster1.png"
   },
 });
 
