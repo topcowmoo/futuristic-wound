@@ -4,5 +4,5 @@ const User = require("./User");
 // Importing the Monster model from the './Monster' file
 const Monster = require("./Monster");
 
-// Exporting both the User and Monster models as an object
+// Exporting the User and Monster models as an object
 module.exports = { User, Monster };
