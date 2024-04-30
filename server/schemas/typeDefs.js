@@ -7,7 +7,7 @@ type User {
     email: String
     password: String
     savedMonsters: [Monster]
-    activeMonster: [Monster]
+    activeMonster: Monster
   }
 
   type Monster {
