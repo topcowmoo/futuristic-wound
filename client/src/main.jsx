@@ -1,10 +1,48 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+// Client Side Imports
+import App from "./App.jsx";
+import "./index.css";
+
+// Page Imports
+import Home from "./pages/Home.jsx";
+import Adventure from "./pages/Adventure.jsx";
+import Dungeon from "./pages/Dungeon.jsx";
+import Shop from "./pages/Shop.jsx";
+import Login from "./pages/Login.jsx";
+
+// Page Router
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <Login />,
+      },
+      {
+        path: "Home",
+        element: <Home />,
+      },
+      {
+        path: "Adventure",
+        element: <Adventure />,
+      },
+      {
+        path: "Dungeon",
+        element: <Dungeon />,
+      },
+      {
+        path: "Shop",
+        element: <Shop />,
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);
