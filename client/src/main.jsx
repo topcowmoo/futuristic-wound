@@ -11,6 +11,8 @@ import Adventure from "./pages/Adventure.jsx";
 import Dungeon from "./pages/Dungeon.jsx";
 import Shop from "./pages/Shop.jsx";
 import Login from "./pages/Login.jsx";
+import Error from "./pages/Error.jsx";
+import Signup from "./pages/Signup.jsx";
 
 // Page Router
 const router = createBrowserRouter([
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "Shop",
         element: <Shop />,
+      },
+      {
+        path: "Signup",
+        element: <Signup />,
       },
     ],
   },
