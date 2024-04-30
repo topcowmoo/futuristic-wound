@@ -1,4 +1,22 @@
 const Adventure = () => {
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   return (
     <div>
       <h1>Adventure</h1>

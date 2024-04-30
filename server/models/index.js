@@ -5,7 +5,6 @@ const User = require('./User');
 const Monster = require("./Monster");
 
 
-const StorePack = require('./Store');
 
 // Exporting the User and Monster models as an object
-module.exports = { User, Monster, StorePack };
+module.exports = { User, Monster };
