@@ -13,6 +13,7 @@ import Shop from "./pages/Shop.jsx";
 import Login from "./pages/Login.jsx";
 import Error from "./pages/Error.jsx";
 import Signup from "./pages/Signup.jsx";
+import Closet from "./pages/Closet.jsx"
 
 // Page Router
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "Home",
         element: <Home />,
+      },
+      {
+        path: "Closet",
+        element: <Closet />,
       },
       {
         path: "Adventure",
