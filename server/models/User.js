@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Model } = require('mongoose');
 const bcrypt = require('bcrypt');
 // import schema from Monster.js
 const monsterSchema = require('./Monster');
@@ -25,9 +25,9 @@ const userSchema = new Schema(
       required: true,
     },
     // Array of saved monsters with reference to Monster schema
-    savedMonsters: [monsterSchema],
+    savedMonsters: [{ type: Schema.Types.ObjectId, ref: 'Monster' }],
     // Active monster with reference to Monster schema
-    activeMonster: monsterSchema
+    activeMonster: { type: Schema.Types.ObjectId, ref: 'Monster' },
   },
   // Additional schema options
   {
