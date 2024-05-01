@@ -1,5 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 //TODO: add imports of useMutation and signup mutation 
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 const SignUp = () => {
   const initialValues = {
@@ -9,11 +12,28 @@ const SignUp = () => {
   };
 
 //TODO: call the signup mutation 
+const [signupUser, {error}] = useMutation(ADD_USER);
 
-  const onSubmit = (values, actions) => {
-    // Handle form submission here
-    console.log(values);
-    actions.setSubmitting(false);
+
+  // Define the onSubmit function to handle form submission
+  const onSubmit = async (values, actions) => {
+    try {
+      // Execute the addUser mutation with form values
+      const { data } = await signupUser({
+        variables: {...values}
+      });
+
+      //if signup is successful, with authenticate the user with token
+      Auth.login(data.addUser.token);
+      window.location.assign("/starter");
+      // Reset form
+      actions.resetForm();
+    } catch (error) {
+      console.error('Signup failed:', error);
+      
+    } finally {
+      actions.setSubmitting(false);
+    }
   };
 
   const validate = (values) => {
@@ -37,20 +57,6 @@ const SignUp = () => {
     }
     return errors;
   };
-
-  //TODO: onSubmit, perform signup mutation 
-  /* the onSubmit function will move here and perform signup mutation.
-   Taking the username/email/password into {date}.
-  mutation returns a token for Auth.login(data.signupUser.token).
-  
-  try {
-
-  }
-  catch (error) {
-
-  lastly we use actions.setSubmitting(false) to reset form
-
-*/
 
 
   return (

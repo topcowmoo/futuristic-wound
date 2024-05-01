@@ -14,6 +14,7 @@ import Login from "./pages/Login.jsx";
 import Error from "./pages/Error.jsx";
 import Signup from "./pages/Signup.jsx";
 import Closet from "./pages/Closet.jsx"
+import Starter from "./pages/Starter.jsx";
 
 // Page Router
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "Signup",
         element: <Signup />,
+      },
+      {
+        path: "Starter",
+        element: <Starter />,
       },
     ],
   },
