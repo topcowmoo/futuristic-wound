@@ -1,19 +1,9 @@
+import Navbar from './Navbar';
+
 const Header = () => {
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>
-            Home
-          </li>
-          <li>
-           Login
-          </li>
-          <li>
-            Register
-          </li>
-        </ul>
-      </nav>
+    <header className="header border-b-2 lg:border-b-0 lg:h-[100px] drop-shadow-lg bg-baketomo">
+      <Navbar />
     </header>
   );
 };
