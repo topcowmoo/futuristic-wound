@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-//TODO: add imports of useMutation and signup mutation 
+// Import the useMutation, mutation and auth to connect to client side 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -11,8 +11,8 @@ const SignUp = () => {
     password: ""
   };
 
-//TODO: call the signup mutation 
-const [signupUser, {error}] = useMutation(ADD_USER);
+  // use mutation signupUser
+  const [signupUser, {error}] = useMutation(ADD_USER);
 
 
   // Define the onSubmit function to handle form submission
