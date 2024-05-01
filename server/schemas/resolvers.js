@@ -24,7 +24,7 @@ const resolvers = {
   Mutation: {
     // Resolver for login mutation
     login: async (parent, { username, password }) => {
-      console.log(email, password);
+      console.log(username, password);
       // Find user by email in the database, throw an auth error if no user is found with the given email
       const user = await User.findOne({ username });
       if (!user) {

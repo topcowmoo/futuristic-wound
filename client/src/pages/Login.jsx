@@ -1,6 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Logo from "../assets/baketomo-logo.svg";
 
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
+
+
 const Login = () => {
   // Initial form values
   const initialValues = {
@@ -8,13 +13,32 @@ const Login = () => {
     password: '',
   };
 
-  // Form submission handler
-  const onSubmit = (values, actions) => {
-    console.log(values);
-    actions.setSubmitting(false);
-    // TODO: Implement login logic with useMutation here
+  // Use the LOGIN_USER mutation
+  const [loginUser, {error}] = useMutation(LOGIN_USER);
+
+
+// Form submission handler
+const onSubmit = async (values, actions) => {
+  try {
+    // Attempt to login user with provided credentials
+    const { data } = await loginUser({ variables: {...values}});
     
-  };
+    // If login is successful, authenticate user and redirect to home page
+    Auth.login(data.login.token);
+    window.location.assign('/Home');
+    
+    // Reset form fields after successful login
+    actions.resetForm();
+
+  } catch (error) {
+    // If login fails, log the error to console
+    console.error('Login unsuccessful', error);
+  } finally {
+    // Set submitting state to false regardless of success or failure
+    actions.setSubmitting(false);
+  }
+};
+
 
   // Form validation
   const validate = (values) => {
