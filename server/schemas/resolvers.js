@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Monster } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -19,6 +19,17 @@ const resolvers = {
       // Throw auth error if the user is not logged in
       throw new AuthenticationError("Not Logged In");
     },
+
+    // All monsters query
+    allMonsters: async () => {
+      try {
+        const allMonsters = await Monster.find();
+        return allMonsters;
+      } catch (error) {
+        console.error(error);
+        throw new Error("Unable to fetch all monsters.");
+      }
+    }
   },
 
   Mutation: {

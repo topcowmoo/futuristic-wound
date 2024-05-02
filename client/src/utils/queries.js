@@ -29,3 +29,14 @@ export const GET_SAVED_AND_ACTIVE_MONSTERS = gql`
     }
   }
 `;
+
+export const GET_ALL_MONSTERS = gql`
+  query GetAllMonsters {
+    allMonsters {
+      _id
+      name
+      image
+    }
+  }
+`;
+

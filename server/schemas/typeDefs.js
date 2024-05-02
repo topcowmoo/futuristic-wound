@@ -25,6 +25,7 @@ type User {
   type Query {
     users:[User]!
     me: User
+    allMonsters: [Monster]!
   }
 
   type Mutation {

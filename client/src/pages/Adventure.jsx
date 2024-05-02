@@ -9,13 +9,7 @@ const Adventure = () => {
   
   
   
-  
-  
-  
-  
-  
-  
-  
+
   
   return (
     <div>
