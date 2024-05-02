@@ -34,7 +34,7 @@ type User {
     saveMonster(name: String!, image: String!, _id: ID!): User
     
     changeMonster(name: String!, image: String!, _id: ID!): User
-    initializeMonster(name: String!, image: String!, _id: ID!): User
+    initializeMonster(name: String, image: String, _id: ID!): User
     
   }
 
