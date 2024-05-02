@@ -1,26 +1,26 @@
 [
   {
     "name": "SaltyChip",
-    "image": "client/src/assets/plucky.svg"
+    "image": "/src/assets/plucky.svg"
   },
   {
     "name": "KetchupChip",
-    "image": "client/src/assets/plucky.svg"
+    "image": "/src/assets/plucky.svg"
   },
   {
     "name": "SourCreamChip",
-    "image": "client/src/assets/plucky.svg"
+    "image": "/src/assets/plucky.svg"
   },
   {
     "name": "BBQChip",
-    "image": "client/src/assets/goof.svg"
+    "image": "/src/assets/goof.svg"
   },
   {
     "name": "SmokeyBaconChip",
-    "image": "client/src/assets/psucky.svg"
+    "image": "/src/assets/psucky.svg"
   },
   {
     "name": "SahilIsAnAssBoss",
-    "image": "client/src/assets/plucky.svg"
+    "image": "/src/assets/plucky.svg"
   }
 ]
