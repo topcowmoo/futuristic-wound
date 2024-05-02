@@ -1,20 +1,13 @@
-const Adventure = () => {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+import Header from "../components/Header";
 
-  
+const Adventure = () => {
   return (
     <div>
-      <h1>Adventure</h1>
-      <p>Adventure Page</p>
+      <div className="h-[620px]">
+        <Header></Header>
+        <h1>Adventure</h1>
+        <p>Adventure Page</p>
+      </div>
     </div>
   );
 };
