@@ -6,29 +6,23 @@ const Navbar = () => {
         ['Adventure', '/Adventure'],
         ['Monster Closet', '/Closet'],
     ];
+
     return (
-        <nav className="flex items-center space-x-4 mx-auto lg:float-right lg:mt-12">
-            {pages.map(([title, url]) => (
-                <Link
-                    key={url}
-                    to={url}
-                    className={`text-lg font-medium ${
-                        currentPage === url ? 'text-blue-700' : 'text-gray-900'
-                    }`}
-                >
-                    {title}
-                </Link>
-            ))}
-        {/* Square elements for buttons */}
-            <div className="flex">
-                <button className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                    <span className="text-white">A</span>
-                </button>
-                <button className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                    <span className="text-white">M</span>
-                </button>
-            </div>
+        <nav className="fixed top-20 left-0 mt-4 ml-4 flex z-10">
+                {/* Buttons for Navbar */}
+                {pages.map(([title, url], index) => (
+                    <div key={url} className="mr-1">
+                        <Link
+                            to={url}
+                            className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 shadow-[0px_8px_8px_0px_rgba(2,48,71,1)]"
+                        >
+                            {title}
+                        </Link>
+                    </div>
+                ))}
         </nav>
     );
 }
+
 export default Navbar;
+
