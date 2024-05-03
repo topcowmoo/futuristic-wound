@@ -13,7 +13,7 @@ import Shop from "./pages/Shop.jsx";
 import Login from "./pages/Login.jsx";
 import Error from "./pages/Error.jsx";
 import Signup from "./pages/Signup.jsx";
-import Closet from "./pages/Closet.jsx"
+import Closet from "./pages/Closet.jsx";
 import Starter from "./pages/Starter.jsx";
 
 // Page Router
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "Home",
+        path: "Homes",
         element: <Home />,
       },
       {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         element: <Closet />,
       },
       {
-        path: "Adventure",
+        path: "Adventures",
         element: <Adventure />,
       },
       {
