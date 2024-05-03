@@ -19,6 +19,15 @@ const Navbar = () => {
                     {title}
                 </Link>
             ))}
+        {/* Square elements for buttons */}
+            <div className="flex">
+                <button className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                    <span className="text-white">A</span>
+                </button>
+                <button className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <span className="text-white">M</span>
+                </button>
+            </div>
         </nav>
     );
 }
