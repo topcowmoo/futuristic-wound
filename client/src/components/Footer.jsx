@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 
 import Logo from "../assets/baketomo-logo.svg";
@@ -6,10 +6,8 @@ import homeBtn from "../assets/home-icon.svg";
 import logoutBtn from "../assets/logout-icon.svg";
 
 const Footer = () => {
-  const currentPages = useLocation().pathname;
-
   return (
-    <footer className="footer flex justify-between items-center">
+    <footer className="footer bg-white py-2 flex justify-between items-center">
       <div className="flex space-x-4">
         <Link to="/home" className="ml-4">
           <img src={homeBtn} alt="Home Button" className="w-[20px]" />
