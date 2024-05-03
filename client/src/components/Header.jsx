@@ -28,6 +28,7 @@ const Header = ({ currentPageProp }) => {
   return (
     <header>
       <div className="w-[375px] h-[100px] shrink-0 [background:#FEAA02] rounded-[0px_0px_30px_30px] fixed">
+        {currentPageProp === "home" && <Navbar />}
         <img
           src={CircleBG}
           alt="Circle Background"
