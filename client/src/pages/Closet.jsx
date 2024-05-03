@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Closet = () => {
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen py-2">
