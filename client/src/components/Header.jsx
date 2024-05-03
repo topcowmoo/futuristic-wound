@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Navbar from "./Navbar";
+import CircleBG from "../assets/circles.svg";
 
 const Header = ({ currentPageProp }) => {
   const pageHeaders = {
@@ -27,7 +28,12 @@ const Header = ({ currentPageProp }) => {
   return (
     <header>
       <div className="w-[375px] h-[100px] shrink-0 [background:#FEAA02] rounded-[0px_0px_30px_30px] fixed">
-        <h1 className="text-white text-3xl font-bold mt-12 ml-4">
+        <img
+          src={CircleBG}
+          alt="Circle Background"
+          className="-top-[25px] fixed w-[375px] h-[100px] overflow-hidden -z-10"
+        />
+        <h1 className="text-white text-3xl font-bold mt-14 ml-4">
           {pageTitle ? pageTitle.title : ""}
         </h1>
       </div>
