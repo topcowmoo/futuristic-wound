@@ -25,6 +25,7 @@ type User {
   type Query {
     users:[User]!
     me: User
+    allMonsters: [Monster]!
   }
 
   type Mutation {
@@ -33,7 +34,7 @@ type User {
     saveMonster(name: String!, image: String!, _id: ID!): User
     
     changeMonster(name: String!, image: String!, _id: ID!): User
-    initializeMonster(name: String!, image: String!, _id: ID!): User
+    initializeMonster(name: String, image: String, _id: ID!): User
     
   }
 

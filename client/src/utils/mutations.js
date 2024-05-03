@@ -61,8 +61,8 @@ export const CHANGE_MONSTER = gql`
 
 // GraphQL mutation to INITIALIZE_MONSTER. It takes three variables: $_id, $name, and $image. It sends these variables to the initializeMonster mutation on the server, which initializes a new active monster for the user with the provided information and also saves this monster to the user's account. It returns the updated user data with the new active monster and all saved monsters.
 export const INITIALIZE_MONSTER = gql`
-  mutation initializeMonster($_id: ID!, $name: String!, $image: String!) {
-    initializeMonster(_id: $_id, name: $name, image: $image) {
+  mutation initializeMonster($_id: ID!) {
+    initializeMonster(_id: $_id ) {
       _id
       username
       activeMonster {

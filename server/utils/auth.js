@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 // Importing the GraphQLError class from the graphql library
 const { GraphQLError } = require("graphql");
 
+
 // Secret key used for signing JWT tokens
 const secret = "mysecretsshhhhh";
 
@@ -21,7 +22,12 @@ module.exports = {
     // Middleware function for token authentication
     authMiddleware: function ({ req }) {
         // Extracting token from request headers, body, or query parameters
+        console.log(req.headers);
+        console.log(req.query);
+        console.log(req.body);
         let token = req.body.token || req.query.token || req.headers.authorization;
+        console.log("toke")
+        console.log(token);
 
         // If token is provided in the Authorization header, extract it
         if (req.headers.authorization) {
@@ -38,6 +44,8 @@ module.exports = {
             // Verifying the token using the secret key and setting the maxAge to expiration time
             const { data } = jwt.verify(token, secret, { maxAge: expiration });
             // Set the decoded user data on the request object
+            console.log("Inside Auth")
+            console.log(data);
             req.user = data;
         } catch (error) {
             // Log error message if token verification fails
