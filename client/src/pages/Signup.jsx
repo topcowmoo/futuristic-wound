@@ -6,6 +6,8 @@ import Auth from "../utils/auth";
 
 import Logo from "../assets/baketomo-logo.svg";
 
+import { Link } from "react-router-dom";
+
 const SignUp = () => {
   const initialValues = {
     username: "",
@@ -140,9 +142,7 @@ const SignUp = () => {
               <div className="mt-4 text-center">
                 <p className="text-sm text-white">
                   Have an account?{" "}
-                  <a href="#" className="text-cyan-300 hover:text-indigo-500">
-                    Login here
-                  </a>
+                  <Link to="/" className="text-cyan-300  hover:text-indigo-500">Login here</Link>
                 </p>
               </div>
             </div>
