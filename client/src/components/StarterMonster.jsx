@@ -10,13 +10,13 @@ const Monster = ({ monster, onMonsterSelect }) => {
     );
 }
 
-Monster.propTypes = {
-    monster: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired
-    }).isRequired,
-    onMonsterSelect: PropTypes.func.isRequired
-};
+// Monster.propTypes = {
+//     monster: PropTypes.shape({
+//         _id: PropTypes.string.isRequired,
+//         name: PropTypes.string.isRequired,
+//         image: PropTypes.string.isRequired
+//     }).isRequired,
+//     onMonsterSelect: PropTypes.func.isRequired
+// };
 
 export default Monster;

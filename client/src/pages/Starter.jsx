@@ -21,32 +21,26 @@ const Starterselect = () => {
 
     // useEffect to run once when component mounts
     useEffect(() => {
-        const storedMonsters = localStorage.getItem('selectedMonsters');
-        if (!loading && !error && data && !storedMonsters) {
+        if (!loading && !error && data) {
             const allMonsters = data.allMonsters;
             const shuffledMonsters = shuffleArray([...allMonsters]);
             const selectedMonsters = shuffledMonsters.slice(0, 3);
             setSelectedMonsters(selectedMonsters);
-            localStorage.setItem('selectedMonsters', JSON.stringify(selectedMonsters));
-        } else if (storedMonsters) {
-            setSelectedMonsters(JSON.parse(storedMonsters));
         }
     }, [loading, error, data]);
 
     // Function to handle monster selection
     const handleMonsterSelection = async (monsterId) => {
-        // get token
-        
-       const token = Auth.loggedIn() ? Auth.getToken() : null;
-       console.log(token)
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        console.log(token)
 
-       if (!token) {
-          return false;
+        if (!token) {
+            return false;
         }
         try {
             console.log(monsterId);
             const { data } = await initMonster({
-                variables: { _id: monsterId}
+                variables: { _id: monsterId }
             });
             console.log(data);
         } catch (error) {
