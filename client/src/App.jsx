@@ -1,5 +1,5 @@
 // Import Outlet
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -12,6 +12,7 @@ import {
 } from "@apollo/client";
 
 import { setContext } from "@apollo/client/link/context";
+import { useEffect, useState } from "react";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -34,15 +35,36 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const location = useLocation();
+  const [currentPages, setCurrentPages] = useState("home");
+  const excludePages = ["login", "signup", ""];
+
+  useEffect(() => {
+    const path = location.pathname;
+    console.log({ path });
+    console.log({ location });
+    getPageNameFromPath(path);
+  }, [location]);
+
+  const getPageNameFromPath = (path) => {
+    const pathParts = path.slice(1).split("/");
+    const pageName = pathParts[pathParts.length - 1];
+    console.log({ pageName });
+    setCurrentPages(pageName.toLowerCase());
+  };
+
   return (
     <>
       <ApolloProvider client={client}>
-        <Header />
-        <Navbar />
+        {!excludePages.includes(currentPages) && (
+          <Header currentPageProp={currentPages} />
+        )}
         <main>
           <Outlet />
         </main>
-        <Footer />
+        {!excludePages.includes(currentPages) && (
+          <Footer currentPage={currentPages} />
+        )}
       </ApolloProvider>
     </>
   );
