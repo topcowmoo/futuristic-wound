@@ -7,9 +7,6 @@ const Home = () => {
   return (
     <div>
       <div className="h-[625px]">
-        <Header>
-          <Navbar />
-        </Header>
         <h1>Home</h1>
       </div>
     </div>

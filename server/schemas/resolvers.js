@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Monster } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -19,6 +19,17 @@ const resolvers = {
       // Throw auth error if the user is not logged in
       throw new AuthenticationError("Not Logged In");
     },
+
+    // All monsters query
+    allMonsters: async () => {
+      try {
+        const allMonsters = await Monster.find();
+        return allMonsters;
+      } catch (error) {
+        console.error(error);
+        throw new Error("Unable to fetch all monsters.");
+      }
+    }
   },
 
   Mutation: {
@@ -95,21 +106,20 @@ const resolvers = {
             }
         },
 
-        initializeMonster: async (parent, {_id, name, image}, context) => {
+        initializeMonster: async (_, {_id }, context) => {
             try {
+              
                 if (context.user) {
                     const updatedUser = await User.findOneAndUpdate(
                         { _id: context.user._id },
                         {
-                            $set: { activeMonster: {_id, name, image} },
-                            $push: { savedMonsters: {_id, name, image} }
+                            $set: { activeMonster: _id, },
+                            $push: { savedMonsters: _id, }
                         },
                         { new: true, runValidators: true }
                     );
                     return updatedUser;
-                } else {
-                    throw new AuthenticationError("You need to be logged in!");
-                }
+                } 
             } catch (error) {
                 console.error(error);
                 throw new Error("Unable to initialize Monster.");

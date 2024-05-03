@@ -1,8 +1,21 @@
+import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
+
 import Logo from "../assets/baketomo-logo.svg";
+import homeBtn from "../assets/home-icon.svg";
+import logoutBtn from "../assets/logout-icon.svg";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer bg-white py-2 flex justify-between items-center">
+      <div className="flex space-x-4">
+        <Link to="/home" className="ml-4">
+          <img src={homeBtn} alt="Home Button" className="w-[20px]" />
+        </Link>
+        <Link onClick={Auth.logout}>
+          <img src={logoutBtn} alt="Logout Button" className="w-[20px]" />
+        </Link>
+      </div>
       <img
         src={Logo}
         alt="Baketomo Logo"
