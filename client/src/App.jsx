@@ -36,38 +36,35 @@ const client = new ApolloClient({
 
 function App() {
   const location = useLocation();
-  console.log(location);
-  const [currentPage, setCurrentPage] = useState("");
-
+  const [currentPages, setCurrentPages] = useState("home");
   const excludePages = ["login", "signup", ""];
 
   useEffect(() => {
     const path = location.pathname;
-    console.log(path);
+    console.log({ path });
+    console.log({ location });
     getPageNameFromPath(path);
-    console.log(currentPage);
-  });
+  }, [location]);
 
   const getPageNameFromPath = (path) => {
     const pathParts = path.slice(1).split("/");
-    console.log(pathParts);
     const pageName = pathParts[pathParts.length - 1];
-
-    // console.log(pageName.toLowerCase());
-    // console.log(currentPage);
-    setCurrentPage(pageName.toLowerCase());
+    console.log({ pageName });
+    setCurrentPages(pageName.toLowerCase());
   };
 
   return (
     <>
       <ApolloProvider client={client}>
-        {!excludePages.includes(currentPage) && currentPage && (
-          <Header currentPage={currentPage} />
+        {!excludePages.includes(currentPages) && (
+          <Header currentPageProp={currentPages} />
         )}
         <main>
           <Outlet />
         </main>
-        <Footer currentPage={currentPage} />
+        {!excludePages.includes(currentPages) && (
+          <Footer currentPage={currentPages} />
+        )}
       </ApolloProvider>
     </>
   );
