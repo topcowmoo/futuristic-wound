@@ -5,6 +5,8 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
+import { Link } from "react-router-dom";
+
 const Login = () => {
   // Initial form values
   const initialValues = {
@@ -110,7 +112,7 @@ const Login = () => {
                 </p>
                 <p className="text-white">
                   Don&apos;t have an account?{" "}
-                  <span className="text-cyan-300">Sign up here</span>
+                  <Link to="/signup" className="text-cyan-300">Sign up here</Link>
                 </p>
               </div>
             </div>
