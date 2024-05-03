@@ -35,6 +35,12 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // Lines 44-59 in a nutshell operates as follows: 
+  // When the user changes pages or navigates through the app, the current page is updated in the state.
+  // We exclude the login, and sign up pages [this is to prevent the header and footer from rendering on signup and login]
+  // We then extract the page that the user is on from the path and set it in the state.
+  // We then pass the current page to the header and footer components to conditionally render them.
+  // These comments are for anyone trying to figure out why the code from line 44-59 exists.
   const location = useLocation();
   const [currentPages, setCurrentPages] = useState("home");
   const excludePages = ["login", "signup", ""];
