@@ -1,22 +1,7 @@
 const Dungeon = () => {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   return (
     <div>
-      <h1>Dungeon</h1>
+      <div className="h-[625px]"></div>
     </div>
   );
 };
