@@ -1,7 +1,7 @@
 [
   {
     "name": "SaltyChip",
-    "image": "/src/assets/plucky.svg"
+    "image": "/dist/assets/plucky.svg"
   },
   {
     "name": "KetchupChip",
