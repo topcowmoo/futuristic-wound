@@ -22,5 +22,17 @@
   {
     "name": "SahilIsAnAssBoss",
     "image": "/src/assets/psucky.svg"
+  },
+  {
+    "name": "Bauss",
+    "image": "/src/assets/boss-mon.svg"
+  },
+  {
+    "name": "Beelzebub",
+    "image": "/src/assets/beelzebub.svg"
+  },
+  {
+    "name": "Toothy",
+    "image": "/src/assets/toothy.svg"
   }
 ]
