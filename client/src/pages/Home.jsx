@@ -3,6 +3,8 @@ import { GET_ACTIVE_MONSTER } from "../utils/queries";
 
 const Home = () => {
   const { loading, data } = useQuery(GET_ACTIVE_MONSTER);
+  console.log('User data')
+  console.log(data)
 
   if (loading) return <h2>Loading...</h2>;
 
