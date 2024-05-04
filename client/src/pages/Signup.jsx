@@ -32,7 +32,11 @@ const SignUp = () => {
       // Reset form
       actions.resetForm();
     } catch (error) {
-      console.error("Signup failed:", error);
+      if (error.message.includes('duplicate key error')) {
+        actions.setErrors({ username: 'Username or Email already exists.'})
+      } else {
+        console.error('Signup failed:', error);
+      }
     } finally {
       actions.setSubmitting(false);
     }
