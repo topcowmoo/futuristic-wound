@@ -31,9 +31,9 @@ type User {
   type Mutation {
     login(username: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    saveMonster(name: String!, image: String!, _id: ID!): User
+    saveMonster(name: String, image: String, _id: ID!): User
     
-    changeMonster(name: String!, image: String!, _id: ID!): User
+    changeMonster(name: String, image: String, _id: ID!): User
     initializeMonster(name: String, image: String, _id: ID!): User
     
   }

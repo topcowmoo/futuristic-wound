@@ -40,3 +40,18 @@ export const GET_ALL_MONSTERS = gql`
   }
 `;
 
+export const GET_SAVED_MONSTERS = gql`
+  query GetSavedMonsters {
+    me {
+      savedMonsters {
+        _id
+        name
+        image
+      }
+    }
+  }
+`;
+
+
+
+
