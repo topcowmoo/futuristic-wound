@@ -5,7 +5,7 @@
   },
   {
     "name": "KetchupChip",
-    "image": "/src/assets/plucky.svg"
+    "image": "/build/assets/plucky.svg"
   },
   {
     "name": "SourCreamChip",
