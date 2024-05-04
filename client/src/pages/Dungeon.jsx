@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_ACTIVE_MONSTER } from "../utils/queries";
+import { GET_ACTIVE_MONSTER, GET_ALL_MONSTERS } from "../utils/queries";
+
 import { useNavigate } from "react-router-dom";
 
 import Modal from "../components/RPSModal";
@@ -11,7 +12,9 @@ import BozoTwo from "../assets/plucky.svg";
 
 const Dungeon = () => {
   const navigate = useNavigate();
-  const { loading, data } = useQuery(GET_ACTIVE_MONSTER);
+  const { loading: loadingActive, data: dataActive } = useQuery(GET_ACTIVE_MONSTER);
+  const { loading: loadingAll, data: dataAll } = useQuery(GET_ALL_MONSTERS);
+  
   const [isOpen, setIsOpen] = useState(false);
   const [round, setRound] = useState(1);
   const [life, setLife] = useState(3);
@@ -19,6 +22,7 @@ const Dungeon = () => {
   const [playerChoice, setPlayerChoice] = useState(null);
   const [monsterChoice, setMonsterChoice] = useState(null);
   const choices = ["rock", "paper", "scissors"];
+  const [enemyMon, setEnemyMon] = useState(null);
 
   const openModal = () => {
     setIsOpen(true);
@@ -96,7 +100,18 @@ const Dungeon = () => {
     return hearts;
   };
 
-  const activeMonster = data?.me?.activeMonster;
+  // Randomly select enemy Monster from array of monsters 
+  useEffect(() => {
+    if (!loadingAll && dataAll?.allMonsters) {
+        const randomIndex = Math.floor(Math.random() * dataAll.allMonsters.length);
+        const randomMonster = dataAll.allMonsters[randomIndex];
+        setEnemyMon(randomMonster);
+    }
+}, [loadingAll, dataAll]);
+
+
+
+  const activeMonster = dataActive?.me?.activeMonster;
 
   return (
     <div className="w-full h-full">
@@ -154,7 +169,7 @@ const Dungeon = () => {
         <div className="space-y-4 flex flex-col mx-auto items-center relative top-32">
           <div className="monsters w-[300px] h-[250px]">
             <img
-              src={BozoOne}
+              src={enemyMon?.image}
               alt="Bozo One"
               className="relative left-[175px] w-[125px] h-[125px]"
             />
