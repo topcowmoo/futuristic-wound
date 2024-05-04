@@ -1,15 +1,15 @@
 [
   {
     "name": "SaltyChip",
-    "image": "/dist/assets/plucky.svg"
+    "image": "/src/assets/plucky.svg"
   },
   {
     "name": "KetchupChip",
-    "image": "/build/assets/plucky.svg"
+    "image": "/src/assets/plucky.svg"
   },
   {
     "name": "SourCreamChip",
-    "image": "/assets/plucky.svg"
+    "image": "/src/assets/goof.svg"
   },
   {
     "name": "BBQChip",
