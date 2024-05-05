@@ -35,7 +35,7 @@ const Closet = () => {
             <img src={activeMonster.image} alt={activeMonster.name} className="w-48 h-48 flex justify-center items-center" />
           </div>
       <button 
-        className="absolute top-36 right-4 px-4 py-2 bg-blue-300 text-white rounded-md hover:bg-blue-500"
+        className="absolute top-36 right-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-amber-600"
         onClick={toggleModal} 
       >
         Monster Box
@@ -45,10 +45,7 @@ const Closet = () => {
       
       <div className="flex flex-col items-end space-y-8 mt-20">
         <div className="flex flex-col space-y-4">
-          <button className="px-6 py-3 text-lg bg-blue-300 text-white rounded-md hover:bg-blue-500">
-            Change Username
-          </button>
-          <button className="px-6 py-3 text-lg bg-blue-300 text-white rounded-md hover:bg-blue-500">
+          <button className="px-6 py-3 text-lg bg-blue-500 text-white rounded-md hover:bg-amber-600">
             Change Password
           </button>
         </div>
