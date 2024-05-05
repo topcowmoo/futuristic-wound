@@ -65,14 +65,14 @@ const resolvers = {
     },
 
     
-    saveMonster: async (parent, {_id, name, image }, context) => {
+    saveMonster: async (parent, {_id }, context) => {
         try {
           // Check if the user is authenticated
           if (context.user) {
             // Update the user document in the database to save the book 
             const updatedUser = await User.findOneAndUpdate(
               { _id: context.user._id },
-              { $push: { savedMonsters: { _id, name, image } } }, // allows for duplicates 
+              { $push: { savedMonsters: _id } }, // allows for duplicates 
               { new: true, runValidators: true }
             );
             

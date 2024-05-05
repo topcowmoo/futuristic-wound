@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "../components/RPSModal";
 
 import DungeonBG from "../assets/dungeon-bg.png";
+import HeartContainer from "../assets/heart-container.svg";
 
 const Dungeon = () => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const Dungeon = () => {
   const [enemyMon, setEnemyMon] = useState("");
   const [enemyBoss, setEnemyBoss] = useState("");
   const [bossToCapture, setBossToCapture] = useState("");
+  const [isCapture, setIsCapture] = useState("fail");
 
   // Function to open Modal
   const openModal = () => {
@@ -55,9 +57,10 @@ const Dungeon = () => {
   // Function to handle the capture of the monster
   const handleCapture = async () => {
     const random = Math.random();
+    setIsCapture("success");
     if (random > 0.5) {
-      console.log("Monster Captured");
-      console.log(bossToCapture);
+      // console.log("Monster Captured");
+      // console.log(bossToCapture);
       await saveMonsterMutation({
         variables: {
           _id: bossToCapture._id,
@@ -65,9 +68,9 @@ const Dungeon = () => {
           image: bossToCapture.image,
         },
       });
-      navigate("/closet");
+      window.location.replace("/closet");
     } else {
-      console.log("Monster Escaped");
+      // console.log("Monster Escaped");
       navigate("/home");
     }
   };
@@ -89,13 +92,13 @@ const Dungeon = () => {
       (playerChoice === "scissors" && monsterChoice === "paper")
     ) {
       setWinLoss("win");
-      console.log("You Win");
+      // console.log("You Win");
     } else if (playerChoice === monsterChoice) {
       setWinLoss("win");
-      console.log("You Win");
+      // console.log("You Win");
     } else {
       setWinLoss("loss");
-      console.log("You Lose");
+      // console.log("You Lose");
     }
   };
 
@@ -116,19 +119,19 @@ const Dungeon = () => {
 
     // If the player's life reaches 0, the game is over and the player loses.
     if (life === 0) {
-      console.log("Game Over you have lost");
+      // console.log("Game Over you have lost");
       openModal();
 
       // If the monster's life reaches 0, the player wins against the first encounter.
     } else if (monsterLife === 0) {
       // Here is where logic for capture monster goes
-      console.log("id of the monster to capture");
+      // console.log("id of the monster to capture");
       openModal();
     }
 
-    console.log("life", life);
-    console.log("monsterLife", monsterLife);
-    console.log("round", round);
+    // console.log("life", life);
+    // console.log("monsterLife", monsterLife);
+    // console.log("round", round);
     game();
   }, [winloss]);
 
@@ -156,7 +159,7 @@ const Dungeon = () => {
       setEnemyMon(randomMonster.image);
       setEnemyBoss(randomBoss.image);
       setBossToCapture(randomBoss);
-      console.log(randomBoss);
+      // console.log(randomBoss);
     }
   }, [loadingAll, dataAll]);
 
@@ -164,7 +167,8 @@ const Dungeon = () => {
 
   return (
     <div className="w-full h-full">
-      <div className="h-[625px] items-center">
+      <div className="h-[620px] items-center">
+        {/* Modal for Winning/Losing RPS game */}
         {monsterLife === 0 ? (
           <Modal isOpen={isOpen} onClose={closeModal}>
             <div className="bg-slate-800 fixed flex flex-col w-screen h-screen m-auto justify-center items-center z-20 bg-opacity-90 backdrop-blur-sm">
@@ -223,7 +227,7 @@ const Dungeon = () => {
               {lifeBar(monsterLife).map((hearts, i) => (
                 <div key={i} className="w-[40px] h-[40px] mx-2">
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/833/833472.png"
+                    src={HeartContainer}
                     alt="Heart"
                     className="w-[50px] h-[50px]"
                   />
@@ -246,7 +250,7 @@ const Dungeon = () => {
                 {lifeBar(life).map((hearts, i) => (
                   <div key={i} className="w-[40px] h-[40px] mx-2">
                     <img
-                      src="https://cdn-icons-png.flaticon.com/512/833/833472.png"
+                      src={HeartContainer}
                       alt="Heart"
                       className="w-[50px] h-[50px]"
                     />
