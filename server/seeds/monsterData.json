@@ -1,35 +1,35 @@
 [
   {
     "name": "SaltyChip",
-    "image": "/src/assets/plucky.svg"
+    "image": "https://raw.githubusercontent.com/topcowmoo/futuristic-wound/b359cb82382b880a40e8a679b8540077b07bfa0d/client/src/assets/plucky.svg"
   },
   {
     "name": "KetchupChip",
-    "image": "/src/assets/plucky.svg"
+    "image": "https://raw.githubusercontent.com/topcowmoo/futuristic-wound/b359cb82382b880a40e8a679b8540077b07bfa0d/client/src/assets/plucky.svg"
   },
   {
     "name": "SourCreamChip",
-    "image": "/src/assets/goof.svg"
+    "image": "https://raw.githubusercontent.com/topcowmoo/futuristic-wound/b359cb82382b880a40e8a679b8540077b07bfa0d/client/src/assets/goof.svg"
   },
   {
     "name": "BBQChip",
-    "image": "/src/assets/goof.svg"
+    "image": "https://raw.githubusercontent.com/topcowmoo/futuristic-wound/b359cb82382b880a40e8a679b8540077b07bfa0d/client/src/assets/goof.svg"
   },
   {
     "name": "SmokeyBaconChip",
-    "image": "/src/assets/psucky.svg"
+    "image": "https://raw.githubusercontent.com/topcowmoo/futuristic-wound/b359cb82382b880a40e8a679b8540077b07bfa0d/client/src/assets/psucky.svg"
   },
   {
     "name": "SahilIsAnAssBoss",
-    "image": "/src/assets/psucky.svg"
+    "image": "https://raw.githubusercontent.com/topcowmoo/futuristic-wound/b359cb82382b880a40e8a679b8540077b07bfa0d/client/src/assets/psucky.svg"
   },
   {
     "name": "Bauss",
-    "image": "/src/assets/boss-mon.svg"
+    "image": "https://raw.githubusercontent.com/topcowmoo/futuristic-wound/b359cb82382b880a40e8a679b8540077b07bfa0d/client/src/assets/boss-mon.svg"
   },
   {
     "name": "Beelzebub",
-    "image": "/src/assets/beelzebub.svg"
+    "image": "https://raw.githubusercontent.com/topcowmoo/futuristic-wound/b359cb82382b880a40e8a679b8540077b07bfa0d/client/src/assets/beelzebub.svg"
   },
   {
     "name": "Toothy",
