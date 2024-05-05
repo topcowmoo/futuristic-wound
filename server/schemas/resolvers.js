@@ -1,5 +1,6 @@
 const { User, Monster } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
+const bcrypt = require('bcrypt');
 
 const resolvers = {
   Query: {
@@ -124,7 +125,43 @@ const resolvers = {
                 console.error(error);
                 throw new Error("Unable to initialize Monster.");
             }
-        }
+        },
+
+        changePassword: async (_, { currentPassword, newPassword }, context) => {
+          try {
+              // Check if the user is authenticated 
+              if (context.user) {
+                  // Hash the new password 
+                  const saltRounds = 10;
+                  const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+      
+                  // Find the user by ID and update the password if the user is found
+                  const updatedUser = await User.findOneAndUpdate(
+                      { _id: context.user._id },
+                      { $set: { password: hashedPassword } },
+                      { new: true } 
+                  );
+      
+                  if (!updatedUser) {
+                      throw new Error("User not found");
+                  }
+      
+                  // Return success message along with the updated user 
+                  return {
+                      success: true,
+                      message: "Password changed successfully",
+                      user: updatedUser
+                  };
+              } else {
+                  throw new Error("You need to be logged in!");
+              }
+          } catch (error) {
+              console.error(error);
+              throw new Error("Unable to change password.");
+          }
+      }
+      
+       
 
   },
 };

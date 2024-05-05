@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import PasswordChangeForm from "../components/PasswordChangeForm";
+
 
 import { useQuery } from "@apollo/client";
 import { GET_ACTIVE_MONSTER } from "../utils/queries";
@@ -10,7 +12,13 @@ const Closet = () => {
 
   console.log('User data:');
   console.log(data);
-  
+
+  const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false);
+
+  const toggleChangePassword = () => {
+    setIsChangePasswordOpen((prev) => !prev);
+  };
+
   // State to track the modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false); 
   
@@ -32,8 +40,8 @@ const Closet = () => {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen py-2">
       <div className="flex justify-center items-center mt-48">
-            <img src={activeMonster.image} alt={activeMonster.name} className="w-48 h-48 flex justify-center items-center" />
-          </div>
+        <img src={activeMonster.image} alt={activeMonster.name} className="w-48 h-48 flex justify-center items-center" />
+      </div>
       <button 
         className="absolute top-36 right-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-amber-600"
         onClick={toggleModal} 
@@ -45,9 +53,11 @@ const Closet = () => {
       
       <div className="flex flex-col items-end space-y-8 mt-20">
         <div className="flex flex-col space-y-4">
-          <button className="px-6 py-3 text-lg bg-blue-500 text-white rounded-md hover:bg-amber-600">
+          <button className="px-6 py-3 text-lg bg-blue-500 text-white rounded-md hover:bg-amber-600" onClick={toggleChangePassword}>
             Change Password
           </button>
+          {/* Render PasswordChangeForm conditionally based on state */}
+          {isChangePasswordOpen && <PasswordChangeForm />}
         </div>
       </div>
     </div>

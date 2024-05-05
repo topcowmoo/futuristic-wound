@@ -28,6 +28,14 @@ type User {
     allMonsters: [Monster]!
   }
 
+  type ChangePasswordResponse {
+    success: Boolean!
+    message: String!
+    user: User
+  }
+
+
+
   type Mutation {
     login(username: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
@@ -35,16 +43,9 @@ type User {
     
     changeMonster(name: String, image: String, _id: ID!): User
     initializeMonster(name: String, image: String, _id: ID!): User
+    changePassword(currentPassword: String!, newPassword: String!): ChangePasswordResponse
     
   }
-
-
-
-
-
-
-
-
 
 
 
