@@ -38,7 +38,7 @@ const Closet = () => {
   };
   
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="relative flex flex-col items-center justify-center h-[625px] py-2">
       <div className="flex justify-center items-center mt-48">
         <img src={activeMonster.image} alt={activeMonster.name} className="w-48 h-48 flex justify-center items-center" />
       </div>

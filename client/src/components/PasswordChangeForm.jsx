@@ -31,24 +31,30 @@ const PasswordChangeForm = () => {
 
   return (
     <div>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="password"
-        value={currentPassword}
-        onChange={(e) => setCurrentPassword(e.target.value)}
-        placeholder="Current Password"
-      />
-      <input
-        type="password"
-        value={newPassword}
-        onChange={(e) => setNewPassword(e.target.value)}
-        placeholder="New Password"
-      />
-      <button type="submit">Change Password</button>
-    </form>
-    {successMessage && <p className="text-green-600">{successMessage}</p>}
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+        <input
+          type="password"
+          value={currentPassword}
+          onChange={(e) => setCurrentPassword(e.target.value)}
+          placeholder="Current Password"
+          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-600"
+        />
+        <input
+          type="password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          placeholder="New Password"
+          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-600"
+        />
+        <button 
+          type="submit" 
+          className="px-6 py-3 text-lg bg-blue-500 text-white rounded-md hover:bg-amber-600"
+        >
+          Confirm 
+        </button>
+      </form>
+      {successMessage && <p className="text-green-600">{successMessage}</p>}
     </div>
-
   );
 };
 
