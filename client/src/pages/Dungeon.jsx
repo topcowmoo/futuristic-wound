@@ -12,17 +12,21 @@ import BozoTwo from "../assets/plucky.svg";
 
 const Dungeon = () => {
   const navigate = useNavigate();
-  const { loading: loadingActive, data: dataActive } = useQuery(GET_ACTIVE_MONSTER);
+  const { loading: loadingActive, data: dataActive } =
+    useQuery(GET_ACTIVE_MONSTER);
   const { loading: loadingAll, data: dataAll } = useQuery(GET_ALL_MONSTERS);
-  
+
   const [isOpen, setIsOpen] = useState(false);
+  const [isBoss, setIsBoss] = useState(false);
   const [round, setRound] = useState(1);
   const [life, setLife] = useState(3);
+  const [monsterLife, setMonsterLife] = useState(3);
   const [winloss, setWinLoss] = useState("");
   const [playerChoice, setPlayerChoice] = useState(null);
   const [monsterChoice, setMonsterChoice] = useState(null);
   const choices = ["rock", "paper", "scissors"];
-  const [enemyMon, setEnemyMon] = useState(null);
+  const [enemyMon, setEnemyMon] = useState("");
+  const [enemyBoss, setEnemyBoss] = useState("");
 
   const openModal = () => {
     setIsOpen(true);
@@ -34,6 +38,13 @@ const Dungeon = () => {
 
   const onClickLoseHandler = () => {
     navigate("/Home");
+  };
+
+  const continueHandler = () => {
+    setIsBoss(true);
+    setLife(3);
+    setMonsterLife(3);
+    closeModal();
   };
 
   const handlePlayerChoice = (choice) => {
@@ -49,6 +60,9 @@ const Dungeon = () => {
       (playerChoice === "paper" && monsterChoice === "rock") ||
       (playerChoice === "scissors" && monsterChoice === "paper")
     ) {
+      setWinLoss("win");
+      console.log("You Win");
+    } else if (playerChoice === monsterChoice) {
       setWinLoss("win");
       console.log("You Win");
     } else {
@@ -70,6 +84,7 @@ const Dungeon = () => {
       if (winloss === "win") {
         // Is where logic for trash mob + boss fight goes
         setRound(round + 1);
+        setMonsterLife(monsterLife - 1);
         setWinLoss("");
       } else if (winloss === "loss") {
         setWinLoss("");
@@ -80,13 +95,14 @@ const Dungeon = () => {
     if (life === 0) {
       console.log("Game Over you have lost");
       openModal();
-    } else if (round === 3) {
+    } else if (monsterLife === 0) {
       // Here is where logic for capture monster goes
       console.log("id of the monster to capture");
       openModal();
     }
 
     console.log("life", life);
+    console.log("monsterLife", monsterLife);
     console.log("round", round);
     game();
   }, [winloss]);
@@ -100,23 +116,28 @@ const Dungeon = () => {
     return hearts;
   };
 
-  // Randomly select enemy Monster from array of monsters 
+  // Randomly select enemy Monster from array of monsters
   useEffect(() => {
-    if (!loadingAll && dataAll?.allMonsters) {
-        const randomIndex = Math.floor(Math.random() * dataAll.allMonsters.length);
-        const randomMonster = dataAll.allMonsters[randomIndex];
-        setEnemyMon(randomMonster);
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max.length);
     }
-}, [loadingAll, dataAll]);
 
+    if (!loadingAll && dataAll?.allMonsters) {
+      const randomIndexLow = getRandomInt(dataAll.allMonsters);
+      const randomIndexHigh = getRandomInt(dataAll.allMonsters);
+      const randomMonster = dataAll?.allMonsters[randomIndexLow];
+      const randomBoss = dataAll?.allMonsters[randomIndexHigh];
+      setEnemyMon(randomMonster.image);
+      setEnemyBoss(randomBoss.image);
+    }
+  }, [loadingAll, dataAll]);
 
-
-  const activeMonster = dataActive?.me?.activeMonster;
+  const activeMonster = dataActive?.me?.activeMonster || "";
 
   return (
     <div className="w-full h-full">
       <div className="h-[625px] items-center">
-        {round === 3 ? (
+        {monsterLife === 0 ? (
           <Modal isOpen={isOpen} onClose={closeModal}>
             <div className="bg-slate-800 fixed flex flex-col w-screen h-screen m-auto justify-center items-center z-20 bg-opacity-90 backdrop-blur-sm">
               <div className="bg-slate-900 w-[350px] h-[400px] flex flex-col justify-center mx-auto items-center rounded-2xl">
@@ -128,9 +149,9 @@ const Dungeon = () => {
                   {" "}
                   <button
                     className="bg-green-800 text-white font-bold px-4 py-[5px] rounded-lg"
-                    onClick={onClickLoseHandler}
+                    onClick={continueHandler} // when capture logic is done change this line to {isBoss ? handleCapture : continueHandler}
                   >
-                    CONTINUE
+                    {isBoss ? "CAPTURE" : "CONTINUE"}
                   </button>
                   <button
                     className="bg-red-800 text-white font-bold px-4 py-[5px] rounded-lg"
@@ -168,8 +189,9 @@ const Dungeon = () => {
         />
         <div className="space-y-4 flex flex-col mx-auto items-center relative top-32">
           <div className="monsters w-[300px] h-[250px]">
+            {isBoss ? "is boss" : "not a boss"}
             <img
-              src={enemyMon?.image}
+              src={isBoss ? enemyBoss : enemyMon}
               alt="Bozo One"
               className="relative left-[175px] w-[125px] h-[125px]"
             />
