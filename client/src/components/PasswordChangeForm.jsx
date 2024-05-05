@@ -7,6 +7,7 @@ const PasswordChangeForm = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [changePassword] = useMutation(CHANGE_PASSWORD);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,12 +19,18 @@ const PasswordChangeForm = () => {
         },
       });
       console.log(data); 
+      // Reset the input boxes 
+      setCurrentPassword('');
+      setNewPassword('');
+       // Set the success message
+      setSuccessMessage('Password changed successfully!');
     } catch (error) {
       console.error(error); 
     }
   };
 
   return (
+    <div>
     <form onSubmit={handleSubmit}>
       <input
         type="password"
@@ -39,6 +46,9 @@ const PasswordChangeForm = () => {
       />
       <button type="submit">Change Password</button>
     </form>
+    {successMessage && <p className="text-green-600">{successMessage}</p>}
+    </div>
+
   );
 };
 
