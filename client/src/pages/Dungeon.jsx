@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { GET_ACTIVE_MONSTER, GET_ALL_MONSTERS } from "../utils/queries";
+import { SAVE_MONSTER } from "../utils/mutations";
 
 import { useNavigate } from "react-router-dom";
 
 import Modal from "../components/RPSModal";
 
 import DungeonBG from "../assets/dungeon-bg.png";
-import BozoOne from "../assets/psucky.svg";
-import BozoTwo from "../assets/plucky.svg";
 
 const Dungeon = () => {
   const navigate = useNavigate();
   const { loading: loadingActive, data: dataActive } =
     useQuery(GET_ACTIVE_MONSTER);
   const { loading: loadingAll, data: dataAll } = useQuery(GET_ALL_MONSTERS);
+  const [saveMonsterMutation] = useMutation(SAVE_MONSTER);
 
   const [isOpen, setIsOpen] = useState(false);
   const [isBoss, setIsBoss] = useState(false);
@@ -27,19 +27,24 @@ const Dungeon = () => {
   const choices = ["rock", "paper", "scissors"];
   const [enemyMon, setEnemyMon] = useState("");
   const [enemyBoss, setEnemyBoss] = useState("");
+  const [bossToCapture, setBossToCapture] = useState("");
 
+  // Function to open Modal
   const openModal = () => {
     setIsOpen(true);
   };
 
+  // Function to close Modal
   const closeModal = () => {
     setIsOpen(false);
   };
 
+  // On Lose, pressing Okay takes you to the home page
   const onClickLoseHandler = () => {
     navigate("/Home");
   };
 
+  // On Win, pressing Continues resets game values to default and sets boss encounter to true.
   const continueHandler = () => {
     setIsBoss(true);
     setLife(3);
@@ -47,6 +52,27 @@ const Dungeon = () => {
     closeModal();
   };
 
+  // Function to handle the capture of the monster
+  const handleCapture = async () => {
+    const random = Math.random();
+    if (random > 0.5) {
+      console.log("Monster Captured");
+      console.log(bossToCapture);
+      await saveMonsterMutation({
+        variables: {
+          _id: bossToCapture._id,
+          name: bossToCapture.name,
+          image: bossToCapture.image,
+        },
+      });
+      navigate("/closet");
+    } else {
+      console.log("Monster Escaped");
+      navigate("/home");
+    }
+  };
+
+  // When a player selects rock, paper or scissors, runs a function that gives both the player and monster a choice
   const handlePlayerChoice = (choice) => {
     const monsterChoice = choices[Math.floor(Math.random() * choices.length)];
     setPlayerChoice(choice);
@@ -54,6 +80,8 @@ const Dungeon = () => {
     handleWinLoss(choice, monsterChoice);
   };
 
+  // If the player's choice results in any of the combinations below, it is a win. If the player's choice is the same as the monster's choice, it is also a win.
+  // Winning sets the round to win and updates the state to reflect the win.
   const handleWinLoss = (playerChoice, monsterChoice) => {
     if (
       (playerChoice === "rock" && monsterChoice === "scissors") ||
@@ -71,14 +99,8 @@ const Dungeon = () => {
     }
   };
 
-  // Fight Logic
-  // Set the round
-  // Round 1 Play the game normal -> function(isRoundOver) +1 Round
-  // When you win against first fight > Instead of redirecting to home page redirect to the next fight with boss
-  // Round 2 Play the boss fight
-  // If number is greater than 2 redirect back to the adventure page
-  // else continue to the next round
-
+  // UseEffect to run the game logic
+  // When a player clicks on a choice, the game logic runs to determine if the player wins or loses.
   useEffect(() => {
     const game = () => {
       if (winloss === "win") {
@@ -92,9 +114,12 @@ const Dungeon = () => {
       }
     };
 
+    // If the player's life reaches 0, the game is over and the player loses.
     if (life === 0) {
       console.log("Game Over you have lost");
       openModal();
+
+      // If the monster's life reaches 0, the player wins against the first encounter.
     } else if (monsterLife === 0) {
       // Here is where logic for capture monster goes
       console.log("id of the monster to capture");
@@ -107,9 +132,10 @@ const Dungeon = () => {
     game();
   }, [winloss]);
 
-  const lifeBar = () => {
+  // Function to display the player's life in hearts
+  const lifeBar = (lifeCount) => {
     const hearts = [];
-    for (let i = 0; i < life; i++) {
+    for (let i = 0; i < lifeCount; i++) {
       hearts.push(i);
     }
 
@@ -129,6 +155,8 @@ const Dungeon = () => {
       const randomBoss = dataAll?.allMonsters[randomIndexHigh];
       setEnemyMon(randomMonster.image);
       setEnemyBoss(randomBoss.image);
+      setBossToCapture(randomBoss);
+      console.log(randomBoss);
     }
   }, [loadingAll, dataAll]);
 
@@ -149,7 +177,8 @@ const Dungeon = () => {
                   {" "}
                   <button
                     className="bg-green-800 text-white font-bold px-4 py-[5px] rounded-lg"
-                    onClick={continueHandler} // when capture logic is done change this line to {isBoss ? handleCapture : continueHandler}
+                    // Handles Capture or Continue
+                    onClick={isBoss ? handleCapture : continueHandler}
                   >
                     {isBoss ? "CAPTURE" : "CONTINUE"}
                   </button>
@@ -189,12 +218,24 @@ const Dungeon = () => {
         />
         <div className="space-y-4 flex flex-col mx-auto items-center relative top-32">
           <div className="monsters w-[300px] h-[250px]">
-            {isBoss ? "is boss" : "not a boss"}
-            <img
-              src={isBoss ? enemyBoss : enemyMon}
-              alt="Bozo One"
-              className="relative left-[175px] w-[125px] h-[125px]"
-            />
+            {/* Monster Div */}
+            <div className="flex flex-row items-center">
+              {lifeBar(monsterLife).map((hearts, i) => (
+                <div key={i} className="w-[40px] h-[40px] mx-2">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/833/833472.png"
+                    alt="Heart"
+                    className="w-[50px] h-[50px]"
+                  />
+                </div>
+              ))}
+              <img
+                src={isBoss ? enemyBoss : enemyMon}
+                alt="Bozo One"
+                className="w-[125px] h-[125px]"
+              />
+            </div>
+            {/* Player Div */}
             <div className="flex flex-row items-center space-x-4">
               <img
                 src={activeMonster.image}
@@ -202,7 +243,7 @@ const Dungeon = () => {
                 className="w-[125px] h-[125px]"
               />
               <div className="flex">
-                {lifeBar().map((heart, i) => (
+                {lifeBar(life).map((hearts, i) => (
                   <div key={i} className="w-[40px] h-[40px] mx-2">
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/833/833472.png"
@@ -214,6 +255,7 @@ const Dungeon = () => {
               </div>
             </div>
           </div>
+          {/* Menu Div */}
           <div className="rps flex flex-row flex-wrap mx-auto items-center justify-center w-[350px] h-[200px] [background:rgba(2,48,71,0.75)] rounded-[25px] border-[5px] border-solid border-[#E9BA14] space-x-2">
             <button
               className="w-[100px] h-[50px] shrink-0  [background:#FFB703] shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] rounded-[10px] text-white text-xl font-bold"
