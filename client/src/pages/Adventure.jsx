@@ -13,13 +13,13 @@ const Adventure = () => {
 
   return (
     <div className="h-full w-full">
-      <div className="h-[620px] 2xl:h-[1240px] flex items-center">
+      <div className="h-[620px] lg:h-[800px] xl:h-[1000px] 2xl:h-[1240px] flex items-center">
         <img
           src={AdventureBG}
           alt="Adventure Background"
           className="fixed w-full h-full object-cover overflow-hidden -z-50"
         />
-        <div className="flex flex-row justify-center items-center space-x-24 mx-auto mt-80">
+        <div className="flex flex-col lg:flex-row justify-center items-center space-x-0 lg:space-x-12 xl:space-x-24 mx-auto mt-80">
           {buttons.map(([title, url, icon]) => (
             <Link to={url} key={title}>
               <div className="flex flex-col justify-center items-center ">
@@ -29,7 +29,7 @@ const Adventure = () => {
                 <img
                   src={icon}
                   alt={title}
-                  className="btn ml-2 w-[150px] shadow-xl"
+                  className="btn ml-2 w-[150px] lg:w-[200px] xl:w-[250px] shadow-xl"
                 />
               </div>
             </Link>

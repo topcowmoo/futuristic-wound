@@ -44,22 +44,22 @@ const Closet = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-[620px] py-2">
-      <div className="h-[620px] flex items-center flex-col">
+    <div className="relative flex flex-col items-center justify-center h-[620px] lg:h-[800px] xl:h-[1000px] 2xl:h-[1240px] py-2">
+      <div className="h-[620px] lg:h-[800px] xl:h-[1000px] 2xl:h-[1240px] flex items-center flex-col">
         <img
           src={MyRoom}
           alt="Home Background"
           className="fixed w-full h-full object-cover overflow-hidden -z-50"
         />
-        <div className="flex justify-center items-center mt-60">
+        <div className="flex justify-center items-center mt-60 lg:mt-80 xl:mt-100 2xl:mt-120">
           <img
             src={activeMonster.image}
             alt={activeMonster.name}
-            className="w-48 h-48 flex justify-center items-center"
+            className="w-48 lg:w-64 xl:w-80 2xl:w-96 h-48 lg:h-64 xl:h-80 2xl:h-96 flex justify-center items-center"
           />
         </div>
         <button
-          className="absolute top-36 right-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-amber-600"
+          className="absolute top-36 lg:top-48 xl:top-60 2xl:top-72 right-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-amber-600"
           onClick={toggleModal}
         >
           Monster Box
@@ -67,10 +67,10 @@ const Closet = () => {
         {/* Render MonsterBoxModal component conditionally based on modal visibility state */}
         {isModalOpen && <MonsterBoxModal onClose={handleCloseModal} />}
 
-        <div className="flex flex-col items-end space-y-8 mt-20">
+        <div className="flex flex-col items-end space-y-8 mt-20 lg:mt-30 xl:mt-40 2xl:mt-50">
           <div className="flex flex-col space-y-4">
             <button
-              className="px-6 py-3 text-lg bg-blue-500 text-white rounded-md hover:bg-amber-600"
+              className="px-6 py-3 text-lg lg:text-xl xl:text-2xl 2xl:text-3xl bg-blue-500 text-white rounded-md hover:bg-amber-600"
               onClick={toggleChangePassword}
             >
               Change Password
