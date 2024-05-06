@@ -6,7 +6,7 @@ import { INITIALIZE_MONSTER } from "../utils/mutations";
 
 import Monster from "../components/StarterMonster";
 import Auth from "../utils/auth";
-import HomeBG from "../assets/my-room-bg.png";
+import StarterBG from "../assets/starter-bg.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -65,8 +65,8 @@ const Starterselect = () => {
     <div className="h-full w-full">
       <div className="h-[620px] flex items-center">
         <img
-          src={HomeBG}
-          alt="Home Background"
+          src={StarterBG}
+          alt="Starter Background"
           className="fixed w-full h-full object-cover overflow-hidden -z-50"
         />
         <div className="flex justify-center mt-8">

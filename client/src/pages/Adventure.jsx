@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 
 import Header from "../components/Header";
 import AdventureBG from "../assets/adventure-bg.png";
+import Shop from "../assets/shop-icon.svg";
+import Dungeon from "../assets/cave-icon.svg";
 
 const Adventure = () => {
   const buttons = [
-    ["Shop", "/shop"],
-    ["Dungeon", "/dungeon"],
+    ["Shop", "/shop", Shop],
+    ["Dungeon", "/dungeon", Dungeon],
   ];
 
   return (
@@ -17,12 +19,19 @@ const Adventure = () => {
           alt="Adventure Background"
           className="fixed w-full h-full object-cover overflow-hidden -z-50"
         />
-        <div className="flex flex-col space-y-24 ml-10 mt-24">
-          {buttons.map(([title, url]) => (
+        <div className="flex flex-row justify-center items-center space-x-24 mx-auto mt-80">
+          {buttons.map(([title, url, icon]) => (
             <Link to={url} key={title}>
-              <button className="bg-[#FEAA02] text-white text-2xl px-4 py-2 rounded-lg m-2">
-                {title}
-              </button>
+              <div className="flex flex-col justify-center items-center ">
+                <h6 className="text-white font-bold text-xl bg-amber-500 p-2 rounded-xl shadow-lg">
+                  {title}
+                </h6>
+                <img
+                  src={icon}
+                  alt={title}
+                  className="btn ml-2 w-[150px] shadow-xl"
+                />
+              </div>
             </Link>
           ))}
           ;
