@@ -1,6 +1,7 @@
 const { User, Monster } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const bcrypt = require('bcrypt');
+const stripe = require("stripe")(process.env.STRIPE_SECRET); // Removed quotes around process.env.STRIPE_SECRET
 
 const resolvers = {
   Query: {
@@ -64,107 +65,131 @@ const resolvers = {
    
     },
 
-    
-    saveMonster: async (parent, {_id }, context) => {
-        try {
-          // Check if the user is authenticated
-          if (context.user) {
-            // Update the user document in the database to save the book 
-            const updatedUser = await User.findOneAndUpdate(
-              { _id: context.user._id },
-              { $push: { savedMonsters: _id } }, // allows for duplicates 
-              { new: true, runValidators: true }
-            );
-            
-            return updatedUser; // Return the updated user document
-          } else {
-            throw new AuthenticationError("You need to be logged in!");
-          }
-        } catch (error) {
-          console.error(error);
-          throw new Error("Unable to save Monster.");
+    saveMonster: async (parent, { _id }, context) => {
+      try {
+        // Check if the user is authenticated
+        if (context.user) {
+          // Update the user document in the database to save the book 
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $push: { savedMonsters: _id } }, // allows for duplicates 
+            { new: true, runValidators: true }
+          );
+          
+          return updatedUser; // Return the updated user document
+        } else {
+          throw new AuthenticationError("You need to be logged in!");
         }
-      },
-
-        changeMonster: async (parent, {_id, name, image }, context) => {
-            try {
-            // Check if the user is authenticated
-            if (context.user) {
-                // Update the user document in the database to save the book 
-                const updatedUser = await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $set: { activeMonster: { _id, name, image } } },
-                { new: true, runValidators: true }
-                );
-                
-                return updatedUser; // Return the updated user document
-            } else {
-                throw new AuthenticationError("You need to be logged in!");
-            }
-            } catch (error) {
-            console.error(error);
-            throw new Error("Unable to change Monster.");
-            }
-        },
-
-        initializeMonster: async (_, {_id }, context) => {
-            try {
-              
-                if (context.user) {
-                    const updatedUser = await User.findOneAndUpdate(
-                        { _id: context.user._id },
-                        {
-                            $set: { activeMonster: _id, },
-                            $push: { savedMonsters: _id, }
-                        },
-                        { new: true, runValidators: true }
-                    );
-                    return updatedUser;
-                } 
-            } catch (error) {
-                console.error(error);
-                throw new Error("Unable to initialize Monster.");
-            }
-        },
-
-        changePassword: async (_, { currentPassword, newPassword }, context) => {
-          try {
-              // Check if the user is authenticated 
-              if (context.user) {
-                  // Hash the new password 
-                  const saltRounds = 10;
-                  const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
-      
-                  // Find the user by ID and update the password if the user is found
-                  const updatedUser = await User.findOneAndUpdate(
-                      { _id: context.user._id },
-                      { $set: { password: hashedPassword } },
-                      { new: true } 
-                  );
-      
-                  if (!updatedUser) {
-                      throw new Error("User not found");
-                  }
-      
-                  // Return success message along with the updated user 
-                  return {
-                      success: true,
-                      message: "Password changed successfully",
-                      user: updatedUser
-                  };
-              } else {
-                  throw new Error("You need to be logged in!");
-              }
-          } catch (error) {
-              console.error(error);
-              throw new Error("Unable to change password.");
-          }
+      } catch (error) {
+        console.error(error);
+        throw new Error("Unable to save Monster.");
       }
+    },
+
+    changeMonster: async (parent, { _id, name, image }, context) => {
+      try {
+        // Check if the user is authenticated
+        if (context.user) {
+          // Update the user document in the database to save the book 
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $set: { activeMonster: { _id, name, image } } },
+            { new: true, runValidators: true }
+          );
+          
+          return updatedUser; // Return the updated user document
+        } else {
+          throw new AuthenticationError("You need to be logged in!");
+        }
+      } catch (error) {
+        console.error(error);
+        throw new Error("Unable to change Monster.");
+      }
+    },
+
+    initializeMonster: async (_, { _id }, context) => {
+      try {
+        if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            {
+              $set: { activeMonster: _id, },
+              $push: { savedMonsters: _id, }
+            },
+            { new: true, runValidators: true }
+          );
+          return updatedUser;
+        } 
+      } catch (error) {
+        console.error(error);
+        throw new Error("Unable to initialize Monster.");
+      }
+    },
+
+    changePassword: async (_, { currentPassword, newPassword }, context) => {
+      try {
+        // Check if the user is authenticated 
+        if (context.user) {
+          // Hash the new password 
+          const saltRounds = 10;
+          const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+
+          // Find the user by ID and update the password if the user is found
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $set: { password: hashedPassword } },
+            { new: true } 
+          );
+
+          if (!updatedUser) {
+            throw new Error("User not found");
+          }
+
+          // Return success message along with the updated user 
+          return {
+            success: true,
+            message: "Password changed successfully",
+            user: updatedUser
+          };
+        } else {
+          throw new Error("You need to be logged in!");
+        }
+      } catch (error) {
+        console.error(error);
+        throw new Error("Unable to change password.");
+      }
+    },
       
-       
-
-  },
+    processPayment: async (_, { amount, token } ) => {
+      try {
+        const charge = await stripe.charges.create({
+          amount,
+          currency: "usd",
+          source: token,
+          description: "Monster Purchase"
+        });
+        // Handle successful payment
+        return {
+          success: true,
+          message: "Payment processed successfully",
+          payment: {
+            id: charge.id,
+            amount: charge.amount,
+            currency: charge.currency,
+            status: charge.status
+          }
+        };
+      } catch (error) {
+        console.error(error);
+        // Handle failed payment
+        return {
+          success: false,
+          message: "Payment failed"
+        };  
+      }
+    }
+    
+  }
 };
-
 
 module.exports = resolvers;

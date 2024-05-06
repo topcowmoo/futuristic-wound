@@ -1,4 +1,23 @@
+import { loadStripe } from '@stripe/stripe-js';
 function PricingCard({ plan }) {
+  const handlePayment = async () => {
+    const stripe = await loadStripe('your_publishable_stripe_key');
+    // Create a checkout session on your server
+    const response = await fetch('/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        priceId: plan.stripePriceId, // Pass the Stripe Price ID associated with the selected plan
+      }),
+    });
+    const session = await response.json();
+    // Redirect to Stripe checkout page
+    await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+  };
   return (
     <div
       className={`pt-12 pb-12 px-12 md:p-6 border rounded-lg text-center z-100 ${
@@ -25,11 +44,13 @@ function PricingCard({ plan }) {
           </li>
         ))}
       </ul>
-      <button className="mt-2 md:mt-4 bg-blue-500 text-white px-4 md:px-4 py-1 md:py-2 rounded hover:bg-blue-600">
+      <button
+        onClick={handlePayment}
+        className="mt-2 md:mt-4 bg-blue-500 text-white px-4 md:px-4 py-1 md:py-2 rounded hover:bg-blue-600"
+      >
         CHOOSE
       </button>
     </div>
   );
 }
-
 export default PricingCard;

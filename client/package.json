@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.1",
+    "@stripe/react-stripe-js": "^2.7.0",
+    "@stripe/stripe-js": "^3.3.0",
     "formik": "^2.4.6",
     "graphql": "^16.8.1",
     "jwt-decode": "^3.1.2",
