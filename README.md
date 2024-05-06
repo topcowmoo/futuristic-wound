@@ -100,7 +100,7 @@ Don't forget to give the project a star! Thanks again!
 - Daniel John Campo - [@github](https://github.com/F3N215) - dcampo85@gmail.com
 - Salvatore Mammoliti - [@github](https://github.com/topcowmoo) - mammoliti.sam@gmail.com
 
-Deployed Link: [https://baketomo.onrender.com/](hhttps://baketomo.onrender.com/)
+Deployed Link: [https://baketomo.onrender.com/](https://baketomo.onrender.com/)
 
 Project Link: [https://github.com/topcowmoo/futuristic-wound](https://github.com/topcowmoo/futuristic-wound)
 
