@@ -1,38 +1,26 @@
 [
   {
-    "name": "SaltyChip",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/plucky.svg"
+    "name": "Pig Fly",
+    "image": "https://baketomobucket.s3.amazonaws.com/pig-fly.svg"
   },
   {
-    "name": "KetchupChip",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/plucky.svg"
+    "name": "Sharkon",
+    "image": "https://baketomobucket.s3.amazonaws.com/sharkon.svg"
   },
   {
-    "name": "SourCreamChip",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/goof.svg"
-  },
-  {
-    "name": "BBQChip",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/goof.svg"
-  },
-  {
-    "name": "SmokeyBaconChip",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/psucky.svg"
-  },
-  {
-    "name": "SahilIsAnAssBoss",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/psucky.svg"
-  },
-  {
-    "name": "Bauss",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/boss-mon.svg"
-  },
-  {
-    "name": "Beelzebub",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/toothy.svg"
+    "name": "Skulotl",
+    "image": "https://baketomobucket.s3.amazonaws.com/skullotl.svg"
   },
   {
     "name": "Toothy",
-    "image": "/src/assets/toothy.svg"
+    "image": "https://baketomobucket.s3.amazonaws.com/toothy.svg"
+  },
+  {
+    "name": "Handsy-Girl",
+    "image": "https://baketomobucket.s3.amazonaws.com/handsy-girl.svg"
+  },
+  {
+    "name": "DalSach",
+    "image": "https://baketomobucket.s3.amazonaws.com/dalsach.svg"
   }
 ]
