@@ -1,26 +1,26 @@
 [
   {
     "name": "Pig Fly",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/plucky.svg"
+    "image": "https://baketomobucket.s3.amazonaws.com/pig-fly.svg"
   },
   {
     "name": "Sharkon",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/plucky.svg"
+    "image": "https://baketomobucket.s3.amazonaws.com/sharkon.svg"
   },
   {
     "name": "Skulotl",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/goof.svg"
+    "image": "https://baketomobucket.s3.amazonaws.com/skullotl.svg"
   },
   {
     "name": "Toothy",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/goof.svg"
+    "image": "https://baketomobucket.s3.amazonaws.com/toothy.svg"
   },
   {
     "name": "Handsy-Girl",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/psucky.svg"
+    "image": "https://baketomobucket.s3.amazonaws.com/handsy-girl.svg"
   },
   {
     "name": "DalSach",
-    "image": "https://github.com/topcowmoo/futuristic-wound/blob/main/client/src/assets/psucky.svg"
+    "image": "https://baketomobucket.s3.amazonaws.com/dalsach.svg"
   }
 ]
