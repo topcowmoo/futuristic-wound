@@ -55,7 +55,7 @@ const PasswordChangeForm = ({ onClose }) => {
             Confirm
           </button>
           {successMessage && (
-            <p className="text-green-600 bg-white bg-opacity-25 p-2 rounded-lg">
+            <p className="text-green-500 bg-slate-900 bg-opacity-60 p-2 rounded-lg">
               {successMessage}
             </p>
           )}
