@@ -21,11 +21,11 @@ const Home = () => {
             alt="Home Background"
             className="fixed w-full h-full object-cover overflow-hidden -z-50"
           />
-          <div className="flex justify-center items-center mt-96 mx-auto">
+          <div className="flex justify-center items-center mt-80 mx-auto ">
             <img
               src={activeMonster.image}
               alt={activeMonster.name}
-              className="w-48 h-48 flex justify-center items-center"
+              className="w-80 h-80 flex justify-center items-center"
             />
           </div>
         </div>
