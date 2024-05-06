@@ -166,28 +166,28 @@ const Dungeon = () => {
   const activeMonster = dataActive?.me?.activeMonster || "";
 
   return (
-    <div className="w-full h-full">
-      <div className="h-[620px] items-center">
+    <div className="2xl:w-full 2xl:h-full">
+      <div className="2xl:h-[620px] 2xl:items-center">
         {/* Modal for Winning/Losing RPS game */}
         {monsterLife === 0 ? (
           <Modal isOpen={isOpen} onClose={closeModal}>
-            <div className="bg-slate-800 fixed flex flex-col w-screen h-screen m-auto justify-center items-center z-20 bg-opacity-90 backdrop-blur-sm">
-              <div className="bg-slate-900 w-[350px] h-[400px] flex flex-col justify-center mx-auto items-center rounded-2xl">
-                <h1 className="text-white text-2xl font-bold">You Win!</h1>
-                <p className="mx-8 my-4 text-white text-center">
+            <div className="2xl:bg-slate-800 2xl:fixed 2xl:flex 2xl:flex-col 2xl:w-screen 2xl:h-screen 2xl:m-auto 2xl:justify-center 2xl:items-center 2xl:z-20 2xl:bg-opacity-90 2xl:backdrop-blur-sm">
+              <div className="2xl:bg-slate-900 2xl:w-[350px] 2xl:h-[400px] 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:mx-auto 2xl:items-center 2xl:rounded-2xl">
+                <h1 className="2xl:text-white 2xl:text-2xl 2xl:font-bold">You Win!</h1>
+                <p className="2xl:mx-8 2xl:my-4 2xl:text-white 2xl:text-center">
                   You beat the monster! Move to the boss?
                 </p>
-                <div className="space-x-4">
+                <div className="2xl:space-x-4">
                   {" "}
                   <button
-                    className="bg-green-800 text-white font-bold px-4 py-[5px] rounded-lg"
+                    className="2xl:bg-green-800 2xl:text-white 2xl:font-bold 2xl:px-4 2xl:py-[5px] 2xl:rounded-lg"
                     // Handles Capture or Continue
                     onClick={isBoss ? handleCapture : continueHandler}
                   >
                     {isBoss ? "CAPTURE" : "CONTINUE"}
                   </button>
                   <button
-                    className="bg-red-800 text-white font-bold px-4 py-[5px] rounded-lg"
+                    className="2xl:bg-red-800 2xl:text-white 2xl:font-bold 2xl:px-4 2xl:py-[5px] 2xl:rounded-lg"
                     onClick={onClickLoseHandler}
                   >
                     HOME
@@ -198,14 +198,14 @@ const Dungeon = () => {
           </Modal>
         ) : (
           <Modal isOpen={isOpen} onClose={closeModal}>
-            <div className="bg-slate-800 fixed flex flex-col w-screen h-screen m-auto justify-center items-center z-20 bg-opacity-90 backdrop-blur-sm">
-              <div className="bg-slate-900 w-[350px] h-[400px] flex flex-col justify-center mx-auto items-center rounded-2xl">
-                <h1 className="text-white text-2xl font-bold">Lose</h1>
-                <p className="mx-8 my-4 text-white text-center">
+            <div className="2xl:bg-slate-800 2xl:fixed 2xl:flex 2xl:flex-col 2xl:w-screen 2xl:h-screen 2xl:m-auto 2xl:justify-center 2xl:items-center 2xl:z-20 2xl:bg-opacity-90 2xl:backdrop-blur-sm">
+              <div className="2xl:bg-slate-900 2xl:w-[350px] 2xl:h-[400px] 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:mx-auto 2xl:items-center 2xl:rounded-2xl">
+                <h1 className="2xl:text-white 2xl:text-2xl 2xl:font-bold">Lose</h1>
+                <p className="2xl:mx-8 2xl:my-4 2xl:text-white 2xl:text-center">
                   You hurry back to your room with your injured friend!
                 </p>
                 <button
-                  className="bg-green-800 text-white font-bold px-4 py-[5px] rounded-lg"
+                  className="2xl:bg-green-800 2xl:text-white 2xl:font-bold 2xl:px-4 2xl:py-[5px] 2xl:rounded-lg"
                   onClick={onClickLoseHandler}
                 >
                   OKAY
@@ -240,19 +240,19 @@ const Dungeon = () => {
               />
             </div>
             {/* Player Div */}
-            <div className="flex flex-row items-center space-x-4">
+            <div className="2xl:flex 2xl:flex-row 2xl:items-center 2xl:space-x-4">
               <img
                 src={activeMonster.image}
                 alt={activeMonster.name}
-                className="w-[125px] h-[125px]"
+                className="2xl:w-[125px] 2xl:h-[125px]"
               />
               <div className="flex">
                 {lifeBar(life).map((hearts, i) => (
-                  <div key={i} className="w-[40px] h-[40px] mx-2">
+                  <div key={i} className="2xl:w-[40px] 2xl:h-[40px] 2xl:mx-2">
                     <img
                       src={HeartContainer}
                       alt="Heart"
-                      className="w-[50px] h-[50px]"
+                      className="2xl:w-[50px] 2xl:h-[50px]"
                     />
                   </div>
                 ))}
@@ -260,21 +260,21 @@ const Dungeon = () => {
             </div>
           </div>
           {/* Menu Div */}
-          <div className="rps flex flex-row flex-wrap mx-auto items-center justify-center w-[350px] h-[200px] [background:rgba(2,48,71,0.75)] rounded-[25px] border-[5px] border-solid border-[#E9BA14] space-x-2">
+          <div className="2xl:rps 2xl:flex 2xl:flex-row 2xl:flex-wrap 2xl:mx-auto 2xl:items-center 2xl:justify-center 2xl:w-[350px] 2xl:h-[200px] 2xl:[background:rgba(2,48,71,0.75)] 2xl:rounded-[25px] 2xl:border-[5px] 2xl:border-solid 2xl:border-[#E9BA14] 2xl:space-x-2">
             <button
-              className="w-[100px] h-[50px] shrink-0  [background:#FFB703] shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] rounded-[10px] text-white text-xl font-bold"
+              className="2xl:w-[100px] 2xl:h-[50px] 2xl:shrink-0  2xl:[background:#FFB703] 2xl:shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] 2xl:rounded-[10px] 2xl:text-white 2xl:text-xl 2xl:font-bold"
               onClick={() => handlePlayerChoice("paper")}
             >
               ROCK
             </button>
             <button
-              className="w-[100px] h-[50px] shrink-0  [background:#FFB703] shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] rounded-[10px] text-white text-xl font-bold"
+              className="2xl:w-[100px] 2xl:h-[50px] 2xl:shrink-0  2xl:[background:#FFB703] 2xl:shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] 2xl:rounded-[10px] 2xl:text-white 2xl:text-xl 2xl:font-bold"
               onClick={() => handlePlayerChoice("paper")}
             >
               PAPER
             </button>
             <button
-              className="w-[100px] h-[50px] shrink-0  [background:#FFB703] shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] rounded-[10px] text-white text-xl font-bold"
+              className="2xl:w-[100px] 2xl:h-[50px] 2xl:shrink-0  2xl:[background:#FFB703] 2xl:shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] 2xl:rounded-[10px] 2xl:text-white 2xl:text-xl 2xl:font-bold"
               onClick={() => handlePlayerChoice("scissors")}
             >
               SCISSORS
