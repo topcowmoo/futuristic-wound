@@ -63,13 +63,13 @@ const Starterselect = () => {
   };
   return (
     <div className="h-full w-full">
-      <div className="h-[620px] flex items-center">
+      <div className="h-[620px] lg:h-[800px] xl:h-[1000px] 2xl:h-[1240px] flex items-center">
         <img
           src={StarterBG}
           alt="Starter Background"
           className="fixed w-full h-full object-cover overflow-hidden -z-50"
         />
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-8 lg:mt-10 xl:mt-12 2xl:mt-14">
           {selectedMonsters.map((monster) => (
             <Monster
               key={monster._id}

@@ -36,7 +36,7 @@ function Shop() {
         {plans.map((plan) => (
           <button
             key={plan.name}
-            className={`mt-20 px-[30px] py-2 text-sm font-semibold rounded-t-md transition-colors duration-300 
+            className={`mt-20 lg:mt-30 xl:mt-40 2xl:mt-50 px-[30px] lg:px-[40px] xl:px-[50px] 2xl:px-[60px] py-2 text-sm lg:text-base xl:text-lg 2xl:text-xl font-semibold rounded-t-md transition-colors duration-300 
                                     ${
                                       activePlan.name === plan.name
                                         ? "bg-blue-500 text-white"
