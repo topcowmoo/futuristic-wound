@@ -3,14 +3,14 @@
 <br />
 <div align="center">
   <a href="https://github.com/topcowmoo/futuristic-wound">
-    <img src="./baketomo-logo.svg" alt="Logo">
+    <img src="./client/src/assets/baketomo-logo.svg" alt="Logo">
   </a>
 
 <h3 align="center"><a href="https://baketomo.onrender.com/">Baketomo</a></h3>
 
   <p align="center">
 
-Summon your courage, gather your monsters and enter the Bakétomo Dungeon to acquire even more monsters for your closet! 
+Summon your courage, gather your monsters and enter the Bakétomo Dungeon to acquire even more monsters for your closet!
 
 <br />
 <br />
@@ -24,6 +24,7 @@ Summon your courage, gather your monsters and enter the Bakétomo Dungeon to acq
 <a href="https://github.com/topcowmoo/futuristic-wound/issues">Request Feature</a>
 
 <a href="https://docs.google.com/document/d/1rHQ_tM3kYNMB6qDTxue6-6NvB7A_TC0nRu216h9Ysxk/edit">Proposal</a>
+
 </p>
 </div>
 
@@ -61,18 +62,15 @@ Login Page:
 
 ![image](https://github.com/topcowmoo/futuristic-wound/assets/149528212/8adabc44-3234-4d6f-a88d-38d02bdc85eb)
 
-
 Signup Page:
 
 ![image](https://github.com/topcowmoo/futuristic-wound/assets/149528212/39535e27-b477-49c0-b22e-381edf0522e9)
-
 
 <!-- BUILT WITH -->
 
 ## Built With
 
 [![My Skills](https://simpleskill.icons.workers.dev/svg?i=nodedotjs,express,javascript,react,vite,reactrouter,tailwindcss,mongodb,mongoose,render,amazonaws,amazons3,=50)](#)
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -99,9 +97,8 @@ Don't forget to give the project a star! Thanks again!
 
 - Sahil Banati - [@github](https://github.com/sbanati) - smbanati@gmail.com
 - Arkaw Banerjee - [@github](https://github.com/Rafflafressia) - arkaw.banerjee@gmail.com
-- Daniel John Campo  - [@github](https://github.com/F3N215) - dcampo85@gmail.com
+- Daniel John Campo - [@github](https://github.com/F3N215) - dcampo85@gmail.com
 - Salvatore Mammoliti - [@github](https://github.com/topcowmoo) - mammoliti.sam@gmail.com
-
 
 Deployed Link: [https://baketomo.onrender.com/](hhttps://baketomo.onrender.com/)
 
@@ -117,7 +114,7 @@ Project Link: [https://github.com/topcowmoo/futuristic-wound](https://github.com
 - Sachin Jhaveri - Project Manager - [@linkedin](https://www.linkedin.com/in/sachin-jhaveri-42436280/?originalSubdomain=ca)
 - Sahil Banati - [@github](https://github.com/sbanati)
 - Arkaw Banerjee - [@github](https://github.com/Rafflafressia)
-- Daniel John Campo  - [@github](https://github.com/F3N215)
+- Daniel John Campo - [@github](https://github.com/F3N215)
 - Salvatore Mammoliti - [@github](https://github.com/topcowmoo)
 - ChatGPT - [@OpenAI Chat](https://chat.openai.com/)
 - Markdown Badges - [@Markdown Badges](https://ileriayo.github.io/markdown-badges/#usage)
