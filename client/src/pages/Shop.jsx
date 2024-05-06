@@ -15,14 +15,14 @@ function Shop() {
       name: "3 Pull",
       price: "$3.99",
       features: ["Gauranteed 3 Random Monsters"],
-      image: "https://baketomobucket.s3.amazonaws.com/goof.svg",
+      image: "https://baketomobucket.s3.amazonaws.com/sharkon.svg",
     },
     {
       type: "enterprise",
       name: "5 Pull",
       price: "$6.99",
       features: ["Gauranteed 5 Random Monsters"],
-      image: "https://baketomobucket.s3.amazonaws.com/plucky.svg",
+      image: "https://baketomobucket.s3.amazonaws.com/skullotl.svg",
     },
   ];
 

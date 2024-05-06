@@ -1,7 +1,7 @@
 const { User, Monster } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const bcrypt = require("bcrypt");
-const stripe = require("stripe")(process.env.STRIPE_SECRET); // Removed quotes around process.env.STRIPE_SECRET
+const stripe = require("stripe")("sk_test_51PCS10CGe9Scab648nVz5VMlzRjMK91NbRGC9NDJDj3aMVHKrnmgZ0s0FVYOkONP5X4t9CWqQJSWDlQyHM0jm7uA00XJNAQ7I9"); // Removed quotes around process.env.STRIPE_SECRET
 
 const resolvers = {
   Query: {
@@ -41,7 +41,7 @@ const resolvers = {
         const session = await stripe.checkout.sessions.create({
           line_items: [
             {
-              priceId: priceId, // Use the provided priceId
+              price: priceId, // Use the provided priceId
               quantity: 1,
             },
           ],

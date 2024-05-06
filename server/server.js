@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
 const db = require('./config/connection'); // Importing database connection setup
+require("dotenv").config();
 
 const { expressMiddleware } = require('@apollo/server/express4'); // Importing Apollo Server Express middleware
 const { ApolloServer } = require('@apollo/server'); // Importing Apollo Server
 const { authMiddleware } = require('./utils/auth'); // Importing custom authentication middleware
 const { typeDefs, resolvers } = require('./schemas'); // Importing GraphQL schema and resolvers
+ 
 
 const app = express(); // Creating an Express application
 const PORT = process.env.PORT || 3001; // Setting port number
