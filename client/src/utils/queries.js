@@ -1,5 +1,4 @@
-
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_ACTIVE_MONSTER = gql`
   query GetActiveMonster {
@@ -52,6 +51,10 @@ export const GET_SAVED_MONSTERS = gql`
   }
 `;
 
-
-
-
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($priceId: ID!) {
+    createCheckoutSession(priceId: $priceId) {
+      session
+    }
+  }
+`;

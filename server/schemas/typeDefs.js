@@ -23,6 +23,8 @@ type Query {
     users: [User]!
     me: User
     allMonsters: [Monster]!
+    createCheckoutSession(priceId: ID!): CreateCheckoutSession
+   
 }
 
 type ChangePasswordResponse {
@@ -31,17 +33,9 @@ type ChangePasswordResponse {
     user: User
 }
 
-type PaymentConfirmation {
-    success: Boolean!
-    message: String
-    payment: Payment
-}
-
-type Payment {
-    id: ID!
-    amount: Int!
-    currency: String!
-    status: String!
+type CreateCheckoutSession {
+    session: ID!
+    priceId: ID!
 }
 
 type Mutation {
@@ -51,7 +45,7 @@ type Mutation {
     changeMonster(name: String, image: String, _id: ID!): User
     initializeMonster(name: String, image: String, _id: ID!): User
     changePassword(currentPassword: String!, newPassword: String!): ChangePasswordResponse
-    processPayment(amount: Int!, token: String!): PaymentConfirmation! # Added processPayment mutation
+ 
 }
 `;
 
