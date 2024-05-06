@@ -63,8 +63,8 @@ const Starterselect = () => {
         }
     }
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1 className="text-6xl font-bold">Choose Your Starter Monster</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen 2xl:py-2">
+            <h1 className="text-6xl 2xl:text-8xl font-bold">Choose Your Starter Monster</h1>
             <div className="flex justify-center mt-8">
                 {selectedMonsters.map(monster => (
                     <Monster key={monster._id} monster={monster} onMonsterSelect={handleMonsterSelection} />

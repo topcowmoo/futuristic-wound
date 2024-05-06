@@ -11,9 +11,9 @@ const Home = () => {
   const activeMonster = data?.me?.activeMonster;
 
   return (
-    <div>
-      <div className="h-[625px]">
-        <h1>Home</h1>
+    <div className="2xl:container 2xl:mx-auto">
+       <div className="h-[625px] 2xl:h-[1250px]">
+      <h1 className="text-2xl 2xl:text-4xl">Home</h1>
         <div>
           <div className="flex justify-center items-center mt-48">
             <img src={activeMonster.image} alt={activeMonster.name} className="w-48 h-48 flex justify-center items-center" />

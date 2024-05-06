@@ -31,8 +31,8 @@ function Shop() {
   const [activePlan, setActivePlan] = useState(plans[0]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-[620px] p-4 ">
-      <div className="[background:#8ECAE6] fixed -z-50 w-[450px] h-[400px] bottom-[200px]"></div>
+    <div className="flex flex-col items-center justify-center h-[620px] 2xl:h-[1240px] p-4 2xl:p-8">
+      <div className="[background:#8ECAE6] fixed -z-50 w-[450px] h-[400px] 2xl:h-[800px] bottom-[200px] 2xl:bottom-[400px]"></div>
       <div className="flex ">
         {plans.map((plan) => (
           <button
