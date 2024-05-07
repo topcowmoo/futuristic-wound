@@ -5,8 +5,6 @@ import HomeBG from "../assets/my-room-bg.png";
 
 const Home = () => {
   const { loading, data } = useQuery(GET_ACTIVE_MONSTER);
-  console.log("User data");
-  console.log(data);
 
   if (loading) return <h2>Loading...</h2>;
 

@@ -43,19 +43,15 @@ const Starterselect = () => {
   // Function to handle monster selection
   const handleMonsterSelection = async (monsterId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-    console.log(token);
 
     if (!token) {
       return false;
     }
     try {
-      console.log(monsterId);
 
       const { data } = await initMonster({
         variables: { _id: monsterId },
       });
-
-      console.log(data);
       navigate("/Home");
     } catch (error) {
       console.error(error);

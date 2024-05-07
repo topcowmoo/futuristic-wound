@@ -47,15 +47,12 @@ function App() {
 
   useEffect(() => {
     const path = location.pathname;
-    console.log({ path });
-    console.log({ location });
     getPageNameFromPath(path);
   }, [location]);
 
   const getPageNameFromPath = (path) => {
     const pathParts = path.slice(1).split("/");
     const pageName = pathParts[pathParts.length - 1];
-    console.log({ pageName });
     setCurrentPages(pageName.toLowerCase());
   };
 

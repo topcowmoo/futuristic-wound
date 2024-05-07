@@ -11,8 +11,6 @@ const Closet = () => {
   const { loading, data } = useQuery(GET_ACTIVE_MONSTER, {
     pollInterval:100
   });
-
-  console.log("User data:");
  
   const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false);
 
@@ -31,7 +29,6 @@ const Closet = () => {
 
   // Variable to hold the users active monster data
   const activeMonster = data?.me?.activeMonster;
-  console.log(activeMonster);
 
   // Function to toggle modal visibility
   const toggleModal = () => {

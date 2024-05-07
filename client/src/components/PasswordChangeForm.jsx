@@ -19,7 +19,6 @@ const PasswordChangeForm = ({ onClose }) => {
           newPassword,
         },
       });
-      console.log(data);
       // Reset the input boxes
       setCurrentPassword("");
       setNewPassword("");

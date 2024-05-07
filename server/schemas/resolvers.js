@@ -36,7 +36,6 @@ const resolvers = {
     createCheckoutSession: async (_, { priceId }, context) => {
       try {
         const url = new URL(context.headers.referer).origin;
-        console.log(url);
         // Create a checkout session using the priceId provided
         const session = await stripe.checkout.sessions.create({
           line_items: [
@@ -63,7 +62,6 @@ const resolvers = {
   Mutation: {
     // Resolver for login mutation
     login: async (parent, { username, password }) => {
-      console.log(username, password);
       // Find user by email in the database, throw an auth error if no user is found with the given email
       const user = await User.findOne({ username });
       if (!user) {

@@ -17,14 +17,10 @@ const MonsterBoxModal = ({ onClose }) => {
       return false;
     }
 
-    console.log("Selected Monster ID:");
-    console.log(monsterId);
     try {
       // Call the changeMonster mutation with the selected monster's ID
       const response = await changeMonster({ variables: { _id: monsterId } });
 
-      console.log("Mutation response:");
-      console.log(response);
       // Refresh the page
       window.location.reload();
       // Close the modal after successfully changing the monster
