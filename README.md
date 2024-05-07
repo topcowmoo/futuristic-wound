@@ -80,6 +80,27 @@ Development team whiteboarded solutions before coding. This helped us understand
 
 [![My Skills](https://simpleskill.icons.workers.dev/svg?i=nodedotjs,express,javascript,react,vite,reactrouter,tailwindcss,mongodb,mongoose,render,amazonaws,amazons3,stripe,=50)](#)
 
+
+### Installation
+
+1. Clone the repo to your local machince
+   ```sh
+   git clone https://github.com/topcowmoo/futuristic-wound
+   ```
+2. Install server and client dependencies
+   ```sh
+   npm install
+   ```
+3. Run the development environment
+   ```sh
+   npm run devlop
+   ```
+4. Build for production
+   ```sh
+   npm run build
+   ```
+5. Signup and play!
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
