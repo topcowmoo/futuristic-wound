@@ -70,7 +70,7 @@ Signup Page:
 
 ## Built With
 
-[![My Skills](https://simpleskill.icons.workers.dev/svg?i=nodedotjs,express,javascript,react,vite,reactrouter,tailwindcss,mongodb,mongoose,render,amazonaws,amazons3,=50)](#)
+[![My Skills](https://simpleskill.icons.workers.dev/svg?i=nodedotjs,express,javascript,react,vite,reactrouter,tailwindcss,mongodb,mongoose,render,amazonaws,amazons3,stripe,=50)](#)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
