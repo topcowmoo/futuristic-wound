@@ -9,6 +9,9 @@ import Modal from "../components/RPSModal";
 
 import DungeonBG from "../assets/dungeon-bg.png";
 import HeartContainer from "../assets/heart-container.svg";
+import Firebolt from "../assets/firebolt.svg";
+import Waterbolt from "../assets/waterbolt.svg";
+import Earthbolt from "../assets/earthbolt.svg";
 
 const Dungeon = () => {
   const navigate = useNavigate();
@@ -265,19 +268,27 @@ const Dungeon = () => {
               className="w-[100px] h-[50px] shrink-0  [background:#FFB703] shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] rounded-[10px] text-white text-xl font-bold"
               onClick={() => handlePlayerChoice("paper")}
             >
-              ROCK
+              <img
+                src={Waterbolt}
+                alt="Waterbolt"
+                className="mx-auto w-[70px]"
+              />
             </button>
             <button
               className="w-[100px] h-[50px] shrink-0  [background:#FFB703] shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] rounded-[10px] text-white text-xl font-bold"
               onClick={() => handlePlayerChoice("paper")}
             >
-              PAPER
+              <img src={Firebolt} alt="Firebolt" className="mx-auto w-[70px]" />
             </button>
             <button
               className="w-[100px] h-[50px] shrink-0  [background:#FFB703] shadow-[0px_4px_42px_0px_rgba(0,0,0,0.25)] rounded-[10px] text-white text-xl font-bold"
               onClick={() => handlePlayerChoice("scissors")}
             >
-              SCISSORS
+              <img
+                src={Earthbolt}
+                alt="Earthbolt"
+                className="mx-auto w-[70px]"
+              />
             </button>
           </div>
         </div>
