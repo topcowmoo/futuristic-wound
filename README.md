@@ -74,6 +74,12 @@ Development team whiteboarded solutions before coding. This helped us understand
 
 ![image](https://github.com/topcowmoo/futuristic-wound/assets/149528212/e5d98a4c-eaa9-4b94-ba2d-d2f29ae1e0be)
 
+### Stripe Implementation
+
+Successful purchases of Monster packs through Stripe:
+
+![image](https://github.com/topcowmoo/futuristic-wound/assets/149528212/7d0481f4-3475-42cd-adc1-b6ba140e507e)
+
 <!-- BUILT WITH -->
 
 ## Built With
