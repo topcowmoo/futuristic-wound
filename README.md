@@ -66,11 +66,19 @@ Signup Page:
 
 ![image](https://github.com/topcowmoo/futuristic-wound/assets/149528212/39535e27-b477-49c0-b22e-381edf0522e9)
 
+### Strategic Approach To Development
+
+Development team whiteboarded solutions before coding. This helped us understand how to create the features:
+
+![image](https://github.com/topcowmoo/futuristic-wound/assets/149528212/86489264-d4c1-4640-973b-1c1acd27ddc7)
+
+![image](https://github.com/topcowmoo/futuristic-wound/assets/149528212/e5d98a4c-eaa9-4b94-ba2d-d2f29ae1e0be)
+
 <!-- BUILT WITH -->
 
 ## Built With
 
-[![My Skills](https://simpleskill.icons.workers.dev/svg?i=nodedotjs,express,javascript,react,vite,reactrouter,tailwindcss,mongodb,mongoose,render,amazonaws,amazons3,=50)](#)
+[![My Skills](https://simpleskill.icons.workers.dev/svg?i=nodedotjs,express,javascript,react,vite,reactrouter,tailwindcss,mongodb,mongoose,render,amazonaws,amazons3,stripe,=50)](#)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

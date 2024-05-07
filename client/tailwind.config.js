@@ -5,7 +5,6 @@ export default {
     extend: {
       colors: {
         baketomo: "#FB8500",
-        
       },
     },
   },
