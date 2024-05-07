@@ -1,11 +1,9 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import Logo from "../assets/baketomo-logo.svg";
-
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
-
-import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik"; // Importing Formik components for form handling
+import Logo from "../assets/baketomo-logo.svg"; // Importing Logo component
+import { useMutation } from "@apollo/client"; // Importing useMutation hook from Apollo Client
+import { LOGIN_USER } from "../utils/mutations"; // Importing LOGIN_USER mutation
+import Auth from "../utils/auth"; // Importing Auth utility for authentication
+import { Link } from "react-router-dom"; // Importing Link component for routing
 
 const Login = () => {
   // Initial form values
@@ -52,6 +50,7 @@ const Login = () => {
     return errors;
   };
 
+  // Render Login component
   return (
     <div>
       <Formik
@@ -112,7 +111,9 @@ const Login = () => {
                 </p>
                 <p className="text-white">
                   Don&apos;t have an account?{" "}
-                  <Link to="/signup" className="text-cyan-300">Sign up here</Link>
+                  <Link to="/signup" className="text-cyan-300">
+                    Sign up here
+                  </Link>
                 </p>
               </div>
             </div>
@@ -123,4 +124,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login; // Exporting Login component

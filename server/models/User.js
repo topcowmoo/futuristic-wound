@@ -1,7 +1,7 @@
-const { Schema, model, Model } = require('mongoose');
-const bcrypt = require('bcrypt');
+const { Schema, model, Model } = require("mongoose");
+const bcrypt = require("bcrypt");
 // import schema from Monster.js
-const monsterSchema = require('./Monster');
+const monsterSchema = require("./Monster");
 
 // Define the user schema
 const userSchema = new Schema(
@@ -17,7 +17,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true, // Ensure email is unique
-      match: [/.+@.+\..+/, 'Must use a valid email address'], // Validate email format
+      match: [/.+@.+\..+/, "Must use a valid email address"], // Validate email format
     },
     // Password field
     password: {
@@ -25,9 +25,9 @@ const userSchema = new Schema(
       required: true,
     },
     // Array of saved monsters with reference to Monster schema
-    savedMonsters: [{ type: Schema.Types.ObjectId, ref: 'Monster' }],
+    savedMonsters: [{ type: Schema.Types.ObjectId, ref: "Monster" }],
     // Active monster with reference to Monster schema
-    activeMonster: { type: Schema.Types.ObjectId, ref: 'Monster' },
+    activeMonster: { type: Schema.Types.ObjectId, ref: "Monster" },
   },
   // Additional schema options
   {
@@ -39,8 +39,8 @@ const userSchema = new Schema(
 );
 
 // Hash user password before saving to the database
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     // Hash the password with bcrypt
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -55,12 +55,12 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 // Virtual field to calculate the number of saved monsters
-userSchema.virtual('monsterCount').get(function () {
+userSchema.virtual("monsterCount").get(function () {
   return this.savedMonsters.length;
 });
 
 // Create the User model
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 
 // Export the User model
 module.exports = User;

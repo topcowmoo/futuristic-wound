@@ -1,25 +1,24 @@
+// Importing necessary hooks and components from React and other libraries
 import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ACTIVE_MONSTER, GET_ALL_MONSTERS } from "../utils/queries";
 import { SAVE_MONSTER } from "../utils/mutations";
-
 import { useNavigate } from "react-router-dom";
-
 import Modal from "../components/RPSModal";
-
 import DungeonBG from "../assets/dungeon-bg.png";
 import HeartContainer from "../assets/heart-container.svg";
 import Firebolt from "../assets/firebolt.svg";
 import Waterbolt from "../assets/waterbolt.svg";
 import Earthbolt from "../assets/earthbolt.svg";
 
+// Main component definition
 const Dungeon = () => {
+  // Initializing hooks and state variables
   const navigate = useNavigate();
   const { loading: loadingActive, data: dataActive } =
     useQuery(GET_ACTIVE_MONSTER);
   const { loading: loadingAll, data: dataAll } = useQuery(GET_ALL_MONSTERS);
   const [saveMonsterMutation] = useMutation(SAVE_MONSTER);
-
   const [isOpen, setIsOpen] = useState(false);
   const [isBoss, setIsBoss] = useState(false);
   const [round, setRound] = useState(1);
@@ -62,8 +61,6 @@ const Dungeon = () => {
     const random = Math.random();
     setIsCapture("success");
     if (random > 0.5) {
-      // console.log("Monster Captured");
-      // console.log(bossToCapture);
       await saveMonsterMutation({
         variables: {
           _id: bossToCapture._id,
@@ -73,7 +70,6 @@ const Dungeon = () => {
       });
       window.location.replace("/closet");
     } else {
-      // console.log("Monster Escaped");
       navigate("/home");
     }
   };
@@ -95,13 +91,10 @@ const Dungeon = () => {
       (playerChoice === "scissors" && monsterChoice === "paper")
     ) {
       setWinLoss("win");
-      // console.log("You Win");
     } else if (playerChoice === monsterChoice) {
       setWinLoss("win");
-      // console.log("You Win");
     } else {
       setWinLoss("loss");
-      // console.log("You Lose");
     }
   };
 
@@ -122,19 +115,13 @@ const Dungeon = () => {
 
     // If the player's life reaches 0, the game is over and the player loses.
     if (life === 0) {
-      // console.log("Game Over you have lost");
       openModal();
 
       // If the monster's life reaches 0, the player wins against the first encounter.
     } else if (monsterLife === 0) {
-      // Here is where logic for capture monster goes
-      // console.log("id of the monster to capture");
       openModal();
     }
 
-    // console.log("life", life);
-    // console.log("monsterLife", monsterLife);
-    // console.log("round", round);
     game();
   }, [winloss]);
 
@@ -162,7 +149,6 @@ const Dungeon = () => {
       setEnemyMon(randomMonster.image);
       setEnemyBoss(randomBoss.image);
       setBossToCapture(randomBoss);
-      // console.log(randomBoss);
     }
   }, [loadingAll, dataAll]);
 

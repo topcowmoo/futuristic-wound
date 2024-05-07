@@ -1,12 +1,9 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-// Import the useMutation, mutation and auth to connect to client side
-import { useMutation } from "@apollo/client";
-import { ADD_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
-
-import Logo from "../assets/baketomo-logo.svg";
-
-import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik"; // Importing Formik components for form handling
+import { useMutation } from "@apollo/client"; // Importing useMutation hook from Apollo Client for executing GraphQL mutations
+import { ADD_USER } from "../utils/mutations"; // Importing GraphQL mutation for adding a new user
+import Auth from "../utils/auth"; // Importing authentication utility
+import Logo from "../assets/baketomo-logo.svg"; // Importing logo image
+import { Link } from "react-router-dom"; // Importing Link component for navigation
 
 const SignUp = () => {
   const initialValues = {
@@ -15,10 +12,10 @@ const SignUp = () => {
     password: "",
   };
 
-  // use mutation signupUser
+  // useMutation hook for signupUser mutation
   const [signupUser, { error }] = useMutation(ADD_USER);
 
-  // Define the onSubmit function to handle form submission
+  // Function to handle form submission
   const onSubmit = async (values, actions) => {
     try {
       // Execute the addUser mutation with form values
@@ -26,7 +23,7 @@ const SignUp = () => {
         variables: { ...values },
       });
 
-      //if signup is successful, with authenticate the user with token
+      // If signup is successful, authenticate the user with token
       Auth.login(data.addUser.token);
       window.location.assign("/starter");
       // Reset form
@@ -42,6 +39,7 @@ const SignUp = () => {
     }
   };
 
+  // Validation function for form fields
   const validate = (values) => {
     const errors = {};
     if (!values.username) {
@@ -66,10 +64,12 @@ const SignUp = () => {
     return errors;
   };
 
+  // Render SignUp component
   return (
     <div className="flex flex-col my-10 mx-auto w-80 items-center justify-center">
-      <img src={Logo} alt="Baketomo Logo" className="my-2" />
+      <img src={Logo} alt="Baketomo Logo" className="my-2" /> {/* Logo */}
       <div className="flex flex-col justify-center items-center w-[325px] h-[550px] [background:linear-gradient(0deg,rgba(255,183,3,0.75)_0%,rgba(255,183,3,0.75)_100%),#FB8500] rounded-[25px] shadow-[0px_4px_11.2px_3px_rgba(0,0,0,0.25)]">
+        {/* SignUp Form */}
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
@@ -80,6 +80,7 @@ const SignUp = () => {
               <h2 className="text-white font-bold text-3xl mx-auto my-4">
                 Signup
               </h2>
+              {/* Username Field */}
               <div className="mb-4">
                 <label
                   htmlFor="username"
@@ -100,6 +101,7 @@ const SignUp = () => {
                   className="text-red-500 text-xs"
                 />
               </div>
+              {/* Email Field */}
               <div className="mb-4">
                 <label htmlFor="email" className="text-white font-bold text-lg">
                   Enter your email
@@ -117,6 +119,7 @@ const SignUp = () => {
                   className="text-red-500 text-xs"
                 />
               </div>
+              {/* Password Field */}
               <div className="mb-6">
                 <label
                   htmlFor="password"
@@ -137,12 +140,14 @@ const SignUp = () => {
                   className="text-red-500 text-xs"
                 />
               </div>
+              {/* Submit Button */}
               <button
                 type="submit"
                 className="mx-auto w-[200px] flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white [background:#8ECAE6] hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-600"
               >
                 Sign Up
               </button>
+              {/* Link to Login Page */}
               <div className="mt-4 text-center">
                 <p className="text-sm text-white">
                   Have an account?{" "}
@@ -159,4 +164,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUp; // Exporting SignUp component

@@ -79,6 +79,7 @@ export const INITIALIZE_MONSTER = gql`
   }
 `;
 
+// GraphQL mutation to CHANGE_PASSWORD. It takes two variables: $currentPassword and $newPassword, both of type String. It sends these variables to the changePassword mutation on the server, which changes the user's password if the current password matches and returns a success flag and a message indicating the result.
 export const CHANGE_PASSWORD = gql`
   mutation ChangePassword($currentPassword: String!, $newPassword: String!) {
     changePassword(
@@ -91,6 +92,7 @@ export const CHANGE_PASSWORD = gql`
   }
 `;
 
+// GraphQL mutation to PROCESS_PAYMENT. It takes two variables: $amount of type Int and $token of type String. It sends these variables to the processPayment mutation on the server, which processes a payment for the specified amount using the provided payment token. It returns a success flag, a message, and information about the processed charge.
 export const PROCESS_PAYMENT = gql`
   mutation ProcessPayment($amount: Int!, $token: String!) {
     processPayment(amount: $amount, token: $token) {

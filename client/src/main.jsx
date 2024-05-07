@@ -1,69 +1,72 @@
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ReactDOM from "react-dom/client"; // Importing ReactDOM for client-side rendering
+import { createBrowserRouter, RouterProvider } from "react-router-dom"; // Importing routing components from react-router-dom
 
 // Client Side Imports
-import App from "./App.jsx";
-import "./index.css";
+import App from "./App.jsx"; // Importing main App component
+import "./index.css"; // Importing CSS styles
 
 // Page Imports
-import Home from "./pages/Home.jsx";
-import Adventure from "./pages/Adventure.jsx";
-import Dungeon from "./pages/Dungeon.jsx";
-import Shop from "./pages/Shop.jsx";
-import Login from "./pages/Login.jsx";
-import Error from "./pages/Error.jsx";
-import Signup from "./pages/Signup.jsx";
-import Closet from "./pages/Closet.jsx";
-import Starter from "./pages/Starter.jsx";
-import Success from "./pages/Success.jsx";
+import Home from "./pages/Home.jsx"; // Importing Home page component
+import Adventure from "./pages/Adventure.jsx"; // Importing Adventure page component
+import Dungeon from "./pages/Dungeon.jsx"; // Importing Dungeon page component
+import Shop from "./pages/Shop.jsx"; // Importing Shop page component
+import Login from "./pages/Login.jsx"; // Importing Login page component
+import Error from "./pages/Error.jsx"; // Importing Error page component
+import Signup from "./pages/Signup.jsx"; // Importing Signup page component
+import Closet from "./pages/Closet.jsx"; // Importing Closet page component
+import Starter from "./pages/Starter.jsx"; // Importing Starter page component
+import Success from "./pages/Success.jsx"; // Importing Success page component
 
 // Page Router
 const router = createBrowserRouter([
+  // Creating a browser router with specified routes
   {
-    path: "/",
-    element: <App />,
-    errorElement: <Error />,
+    path: "/", // Root path
+    element: <App />, // Main App component
+    errorElement: <Error />, // Error page component
     children: [
+      // Child routes
       {
-        index: true,
-        element: <Login />,
+        index: true, // Index route
+        element: <Login />, // Login page component
       },
       {
-        path: "Home",
-        element: <Home />,
+        path: "Home", // Home page path
+        element: <Home />, // Home page component
       },
       {
-        path: "Closet",
-        element: <Closet />,
+        path: "Closet", // Closet page path
+        element: <Closet />, // Closet page component
       },
       {
-        path: "Adventure",
-        element: <Adventure />,
+        path: "Adventure", // Adventure page path
+        element: <Adventure />, // Adventure page component
       },
       {
-        path: "Dungeon",
-        element: <Dungeon />,
+        path: "Dungeon", // Dungeon page path
+        element: <Dungeon />, // Dungeon page component
       },
       {
-        path: "Shop",
-        element: <Shop />,
+        path: "Shop", // Shop page path
+        element: <Shop />, // Shop page component
       },
       {
-        path: "Signup",
-        element: <Signup />,
+        path: "Signup", // Signup page path
+        element: <Signup />, // Signup page component
       },
       {
-        path: "Starter",
-        element: <Starter />,
+        path: "Starter", // Starter page path
+        element: <Starter />, // Starter page component
       },
       {
-        path: "success",
-        element: <Success />,
+        path: "success", // Success page path
+        element: <Success />, // Success page component
       },
     ],
   },
 ]);
 
+// Rendering the router using ReactDOM.createRoot
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <RouterProvider router={router} /> // Providing the router to the RouterProvider
 );
