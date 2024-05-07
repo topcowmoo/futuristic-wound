@@ -32,10 +32,10 @@ const SignUp = () => {
       // Reset form
       actions.resetForm();
     } catch (error) {
-      if (error.message.includes('duplicate key error')) {
-        actions.setErrors({ username: 'Username or Email already exists.'})
+      if (error.message.includes("duplicate key error")) {
+        actions.setErrors({ username: "Username or Email already exists." });
       } else {
-        console.error('Signup failed:', error);
+        console.error("Signup failed:", error);
       }
     } finally {
       actions.setSubmitting(false);
@@ -146,7 +146,9 @@ const SignUp = () => {
               <div className="mt-4 text-center">
                 <p className="text-sm text-white">
                   Have an account?{" "}
-                  <Link to="/" className="text-cyan-300  hover:text-indigo-500">Login here</Link>
+                  <Link to="/" className="text-cyan-300  hover:text-indigo-500">
+                    Login here
+                  </Link>
                 </p>
               </div>
             </div>
